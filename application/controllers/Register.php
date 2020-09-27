@@ -11,7 +11,7 @@ class Register extends CI_Controller
    public function index()
    {
       $data['judul'] = 'Sign Up';
-      $data['css'] = 'signUp2.css';
+      $data['css'] = 'signUp.css';
       $data['script'] = 'signUp.js';
 
       $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]');
