@@ -4,7 +4,13 @@
       <a class="navbar-brand" href="">Bikes</a>
 
       <div class="navbar-nav navbar-nav1">
-         <a class="nav-item nav-link linkEffect" href="<?= base_url('Login'); ?>">Sign In</a>
+         <!-- <?php $email = $session['email']; ?>
+
+         <?php if (empty($email)) : ?>
+            <?php else : ?>
+            <a class="nav-item nav-link linkEffect" href="<?= base_url('Profile'); ?>">You</a>
+         <?php endif; ?> -->
+               <a class="nav-item nav-link linkEffect" href="<?= base_url('Login'); ?>">Sign In</a>
          <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
             <i class="fas fa-shopping-cart">
                <span>0</span>

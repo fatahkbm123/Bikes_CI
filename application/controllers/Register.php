@@ -30,38 +30,43 @@ class Register extends CI_Controller
          $this->load->view('Register/index');
          $this->load->view('Templates/footer', $data);
       } else {
-         // Insert user to table
-         $username = ucfirst(htmlspecialchars($this->input->post('username', true)));
-         $email = htmlspecialchars($this->input->post('email', true));
-         $password = htmlspecialchars($this->input->post('password', true));
-
-         $data = [
-            'username' => $username,
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'image' => 'default.jpg',
-            'is_active' => 0,
-            'role_id' => 2,
-            'date_create' => time()
-         ];
-
-         // Activated email
-         $token = base64_encode(random_bytes(32));
-         $user_token = [
-            'email' => $email,
-            'token' => $token,
-            'date_create' => time()
-         ];
-
-         $this->db->insert('users', $data);
-         $this->db->insert('user_token', $user_token);
-         $this->_sendEmail($token, 'verify', $email);
-
-         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-         Congratulations! your account has been created, please actived in email.
-       </div>');
-         redirect('Register');
+         $this->register();
       }
+   }
+
+   public function register()
+   {
+      // Insert user to table
+      $username = ucfirst(htmlspecialchars($this->input->post('username', true)));
+      $email = htmlspecialchars($this->input->post('email', true));
+      $password = htmlspecialchars($this->input->post('password', true));
+
+      $data = [
+         'username' => $username,
+         'email' => $email,
+         'password' => password_hash($password, PASSWORD_DEFAULT),
+         'image' => 'default.jpg',
+         'is_active' => 0,
+         'role_id' => 2,
+         'date_create' => time()
+      ];
+
+      // Activated email
+      $token = base64_encode(random_bytes(32));
+      $user_token = [
+         'email' => $email,
+         'token' => $token,
+         'date_create' => time()
+      ];
+
+      $this->db->insert('users', $data);
+      $this->db->insert('user_token', $user_token);
+      $this->_sendEmail($token, 'verify', $email);
+
+      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+      Congratulations! your account has been created, please actived in email.
+    </div>');
+      redirect('Register');
    }
 
    private function _sendEmail($token, $type, $email)
