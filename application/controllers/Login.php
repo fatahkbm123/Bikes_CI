@@ -12,7 +12,7 @@ class Login extends CI_Controller
    public function index()
    {
       $data['judul'] = 'signIn';
-      $data['css'] = 'signIn2.css';
+      $data['css'] = 'signIn.css';
       $data['script'] = 'signIn.js';
 
       $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
