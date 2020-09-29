@@ -4,6 +4,12 @@ $(document).ready(function () {
       $('body').addClass('fixed');
    })
 
+   $('.btnUser').on('click', function (e) {
+      e.preventDefault();
+      $('.btnUser i').toggleClass('fa-chevron-down fa-chevron-up');
+      $('.userButton').toggleClass('active');
+   })
+
    $('.scroll').on('click', function (e) {
       e.preventDefault();
 

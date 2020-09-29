@@ -19,7 +19,7 @@
       <div class="col-lg-5 col-md-7 mx-auto">
 
          <?php if ($this->session->flashdata()) : ?>
-            <div class="form-group text-center">
+            <div class="form-group text-center Message">
                <?= $this->session->flashdata('message'); ?>
             </div>
          <?php endif; ?>

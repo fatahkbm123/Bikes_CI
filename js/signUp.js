@@ -13,3 +13,8 @@ $('.Show').on('click', function () {
       $('.password2').attr('type', 'password')
    }
 })
+
+const message = $('.Message');
+setTimeout(() => {
+   message.remove();
+}, 7000);

@@ -3,21 +3,33 @@
    <div class="container">
       <a class="navbar-brand" href="">Bikes</a>
 
-      <div class="navbar-nav navbar-nav1">
-         <!-- <?php $email = $session['email']; ?>
+      <?php if (isset($email)) : ?>
+         <div class="navbar-nav navbar-nav1 align-items-center">
+            <div style="position: relative;">
+               <a href="" class="nav-item nav-link btnUser" style="position: relative;">
+                  <?= $users['username']; ?>
+                  <img src="<?= base_url('asset/default.jpg'); ?>" class="gambarUser img-thumbnail rounded-circle" width="25">
+                  <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+               </a>
 
-         <?php if (empty($email)) : ?>
-            <?php else : ?>
-            <a class="nav-item nav-link linkEffect" href="<?= base_url('Profile'); ?>">You</a>
-         <?php endif; ?> -->
+               <div class="userButton">
+                  <a href="">Profile</a>
+                  <a href="<?= base_url('Home/logout'); ?>">Logout</a>
+               </div>
+            </div>
+         <?php else : ?>
+            <div class="navbar-nav navbar-nav1">
                <a class="nav-item nav-link linkEffect" href="<?= base_url('Login'); ?>">Sign In</a>
-         <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
-            <i class="fas fa-shopping-cart">
-               <span>0</span>
-            </i>
-         </a>
-      </div>
-   </div>
+            <?php endif; ?>
+
+
+            <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
+               <i class="fas fa-shopping-cart">
+                  <span>0</span>
+               </i>
+            </a>
+            </div>
+         </div>
 </nav>
 
 
@@ -219,7 +231,11 @@
             </div>
 
             <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php if (isset($email)) : ?>
+               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php else : ?>
+               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php endif; ?>
          </div>
 
          <div class="grid__item">
@@ -236,7 +252,11 @@
             </div>
 
             <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php if (isset($email)) : ?>
+               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php else : ?>
+               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php endif; ?>
          </div>
 
          <div class="grid__item">
@@ -253,7 +273,11 @@
             </div>
 
             <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php if (isset($email)) : ?>
+               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php else : ?>
+               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php endif; ?>
          </div>
 
          <div class="grid__item">
@@ -270,7 +294,11 @@
             </div>
 
             <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php if (isset($email)) : ?>
+               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php else : ?>
+               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php endif; ?>
          </div>
 
          <div class="grid__item">
@@ -287,7 +315,11 @@
             </div>
 
             <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php if (isset($email)) : ?>
+               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php else : ?>
+               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php endif; ?>
          </div>
 
       </div>
