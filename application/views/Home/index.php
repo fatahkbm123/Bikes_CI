@@ -46,11 +46,9 @@
       <!-- Akhir -->
 
       <div class="navbar-nav navbar-nav2">
-         <a class="nav-item nav-link linkEffect2 scroll" href="#Home">Home</a>
-         <a class="nav-item nav-link linkEffect2" href="Help/index.html">Help</a>
-         <a class="nav-item nav-link linkEffect2 scroll" href="#Client">Client Say</a>
-         <a class="nav-item nav-link linkEffect2 scroll" href="#Kategori">Categories</a>
-         <a class="nav-item nav-link linkEffect2 scroll" href="#About">About Us</a>
+         <?php foreach ($navbar2 as $nav) : ?>
+            <a class="nav-item nav-link linkEffect2 <?= $nav['scroll'] ?>" href="<?= $nav['href']; ?>"><?= $nav['navbar']; ?></a>
+         <?php endforeach; ?>
       </div>
    </div>
 </nav>
@@ -63,11 +61,9 @@
       </div>
    </div>
 
-   <a class="nav-item nav-link linkEffect2 scroll2" href="#Home">Home</a>
-   <a class="nav-item nav-link linkEffect2" href="Help/index.html">Help</a>
-   <a class="nav-item nav-link linkEffect2 scroll2" href="#Client">Client Say</a>
-   <a class="nav-item nav-link linkEffect2 scroll2" href="#Kategori">Categories</a>
-   <a class="nav-item nav-link linkEffect2 scroll2" href="#About">About Us</a>
+   <?php foreach ($navbar2 as $nav) : ?>
+      <a class="nav-item nav-link linkEffect2 <?= $nav['scroll'] ?>" href="<?= $nav['href']; ?>"><?= $nav['navbar']; ?></a>
+   <?php endforeach; ?>
 </div>
 <!-- Akhir Navbar -->
 
@@ -83,7 +79,7 @@
             </ol>
             <div class="carousel-inner" style="position: relative;">
                <div class="carousel-item" data-interval="2500">
-                  <img src="<?= base_url('asset/foto4.jpg'); ?>" class="d-block w-100 img-fluid">
+                  <img src="<?= base_url($carousel[0]); ?>" class="d-block w-100 img-fluid">
                   <div class="carousel-caption d-md-block">
                      <h1 class="display-4">Quality products, <span>fast</span><br> and <span>safe</span> with us.
                      </h1>
@@ -97,7 +93,7 @@
                   </div>
                </div>
                <div class="carousel-item active carousel-item-left" data-interval="2500">
-                  <img src="<?= base_url('asset/foto3.jpg'); ?>" class="d-block w-100">
+                  <img src="<?= base_url($carousel[1]); ?>" class="d-block w-100">
                   <div class="carousel-caption d-md-block">
                      <h1 class="display-4">Quality products, <span>fast</span><br> and <span>safe</span>
                         with us.
@@ -112,7 +108,7 @@
                   </div>
                </div>
                <div class="carousel-item carousel-item-next carousel-item-left " data-interval="2500">
-                  <img src="<?= base_url('asset/foto6.jpg'); ?>" class="d-block w-100">
+                  <img src="<?= base_url($carousel[2]); ?>" class="d-block w-100">
                   <div class="carousel-caption d-md-block">
                      <h1 class="display-4">Quality products, <span>fast</span><br> and <span>safe</span> with us.
                      </h1>
@@ -139,13 +135,13 @@
       <div class="col-lg-4 col-md-12 col-sm-12 Gambar2">
          <div class="row">
             <div class="col-12 mb-1 gForm" style="position: relative;">
-               <img src="<?= base_url('asset/foto6.jpg'); ?>" class="img-fluid">
+               <img src="<?= base_url($carousel[2]); ?>" class="img-fluid">
                <div class="form-group">
                   <p>Branded Bikes diskon 80%</p>
                </div>
             </div>
             <div class="col-12 gForm2" style="position: relative;">
-               <img src="<?= base_url('asset/foto4.jpg'); ?>" class="img-fluid">
+               <img src="<?= base_url($carousel[0]); ?>" class="img-fluid">
                <div class="form-group">
                   <p>Branded Bikes diskon 80%</p>
                </div>
@@ -179,27 +175,15 @@
 
          <div class="col-lg-8 TKategori p-0">
             <div class="wrapperCategories">
-               <div class="contentKategori text-center">
-                  <span>Sepeda Balap</span>
-               </div>
-               <div class="contentKategori text-center">
-                  <span>Sepeda Balap</span>
-               </div>
-               <div class="contentKategori text-center">
-                  <span>Sepeda Balap</span>
-               </div>
-               <div class="contentKategori text-center">
-                  <span>Sepeda Balap</span>
-               </div>
-               <div class="contentKategori text-center">
-                  <span>Sepeda Balap</span>
-               </div>
-               <div class="contentKategori text-center">
-                  <span>Sepeda Balap</span>
-               </div>
+               <?php for ($i = 1; $i <= 6; $i++) : ?>
+                  <div class="contentKategori text-center">
+                     <span>Sepeda Balap</span>
+                  </div>
+               <?php endfor; ?>
             </div>
          </div>
       </div>
+   </div>
    </div>
 </section>
 <!-- Akhir Kategories -->
@@ -217,111 +201,30 @@
 
    <div class="row contentProduk notFoundProduk">
       <div class=" grid">
-         <div class="grid__item">
-            <div class="slider">
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda1.jpg'); ?>"></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda1.jpg'); ?>"></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda1.jpg'); ?>"></div>
+
+         <?php foreach ($product as $produk) : ?>
+            <div class="grid__item">
+               <div class="slider">
+                  <?php for ($i = 1; $i <= 3; $i++) : ?>
+                     <div class="slider__item grabbable">
+                        <img src="<?= base_url('asset/FotoProduct/') . $produk['gambar'] ?>">
+                     </div>
+                  <?php endfor; ?>
+               </div>
+               <div class="meta">
+                  <h3 class="meta__title"><?= $produk['title']; ?></h3>
+                  <span class="meta__brand"><?= $produk['brand']; ?></span>
+                  <span class="meta__price"><?= $produk['harga']; ?></span>
+               </div>
+
+               <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
+               <?php if (isset($email)) : ?>
+                  <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+               <?php else : ?>
+                  <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+               <?php endif; ?>
             </div>
-
-            <div class="meta">
-               <h3 class="meta__title">Sepeda Gunung</h3>
-               <span class="meta__brand">Dummy Brand</span>
-               <span class="meta__price">Rp 100.000</span>
-            </div>
-
-            <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <?php if (isset($email)) : ?>
-               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php else : ?>
-               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php endif; ?>
-         </div>
-
-         <div class="grid__item">
-            <div class="slider">
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda2.jpg'); ?>" alt="Dummy" / style="background: none;"></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda2.jpg'); ?>" alt="Dummy" /></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda2.jpg'); ?>" alt="Dummy" /></div>
-            </div>
-
-            <div class="meta">
-               <h3 class="meta__title">Sepeda Gunung</h3>
-               <span class="meta__brand">Dummy Brand</span>
-               <span class="meta__price">Rp 100.000</span>
-            </div>
-
-            <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <?php if (isset($email)) : ?>
-               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php else : ?>
-               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php endif; ?>
-         </div>
-
-         <div class="grid__item">
-            <div class="slider">
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda3.jpg'); ?>" alt="Dummy" / style="background: none;"></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda3.jpg'); ?>" alt="Dummy" /></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda3.jpg'); ?>" alt="Dummy" /></div>
-            </div>
-
-            <div class="meta">
-               <h3 class="meta__title">Sepeda Gunung</h3>
-               <span class="meta__brand">Dummy Brand</span>
-               <span class="meta__price">Rp 100.000</span>
-            </div>
-
-            <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <?php if (isset($email)) : ?>
-               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php else : ?>
-               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php endif; ?>
-         </div>
-
-         <div class="grid__item">
-            <div class="slider">
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda4.jpg'); ?>" alt="Dummy" / style="background: none;"></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda4.jpg'); ?>" alt="Dummy" /></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/Sepeda4.jpg'); ?>" alt="Dummy" /></div>
-            </div>
-
-            <div class="meta">
-               <h3 class="meta__title">Sepeda Gunung</h3>
-               <span class="meta__brand">Dummy Brand</span>
-               <span class="meta__price">Rp 100.000</span>
-            </div>
-
-            <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <?php if (isset($email)) : ?>
-               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php else : ?>
-               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php endif; ?>
-         </div>
-
-         <div class="grid__item">
-            <div class="slider">
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/images.jpg'); ?>" alt="Dummy" / style="background: none;"></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/images.jpg'); ?>" alt="Dummy" /></div>
-               <div class="slider__item grabbable"><img src="<?= base_url('asset/FotoProduct/images.jpg'); ?>" alt="Dummy" /></div>
-            </div>
-
-            <div class="meta">
-               <h3 class="meta__title">Sepeda Gunung</h3>
-               <span class="meta__brand">Dummy Brand</span>
-               <span class="meta__price">Rp 100.000</span>
-            </div>
-
-            <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
-            <?php if (isset($email)) : ?>
-               <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php else : ?>
-               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-            <?php endif; ?>
-         </div>
-
+         <?php endforeach; ?>
       </div>
    </div>
 
@@ -346,7 +249,7 @@
    <div class="container rAbout mt-5">
       <div class="row" style="position: relative;">
          <div class="col-lg-6 col-md-12 col-sm-12 Foto mb-5">
-            <img src="<?= base_url('asset/foto6.jpg'); ?>">
+            <img src="<?= base_url($carousel[2]); ?>">
          </div>
 
          <div class="col-lg-6 col-md-12 col-sm-12 Body">
@@ -376,69 +279,19 @@
             </div>
          </div>
       </div>
-
       <div class="row text-center rTestimonial justify-content-center center">
-         <div class="col-lg-6 p-5">
-            <div class="form-group">
-               <img src="<?= base_url('asset/Me.jpg'); ?>" class="img-fluid rounded-circle Me">
-               <span>Fatah Noer</span>
-               <h5>Full Stack Developer</h5>
-               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur officia quas incidunt
-                  impedit fugit quo totam doloribus velit, voluptate deleniti accusamus minus laboriosam, beatae ipsa
-                  deserunt maiores iure exercitationem!"</p>
+         <?php foreach ($testimonial as $testi) : ?>
+            <div class="col-lg-6 p-5">
+               <div class="form-group">
+                  <img src="<?= base_url($testi['gambar']); ?>" class="img-fluid rounded-circle Me">
+                  <span><?= $testi['nama']; ?></span>
+                  <h5><?= $testi['about']; ?></h5>
+                  <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur officia quas incidunt
+                     impedit fugit quo totam doloribus velit, voluptate deleniti accusamus minus laboriosam, beatae ipsa
+                     deserunt maiores iure exercitationem!"</p>
+               </div>
             </div>
-         </div>
-         <div class="col-lg-6 p-5">
-            <div class="form-group">
-               <img src="<?= base_url('asset/Hotman.jpg'); ?>" class="img-fluid rounded-circle">
-               <span>Faris Kamaludin</span>
-               <h5>Designer & Mobile Apps</h5>
-               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur officia quas incidunt
-                  impedit fugit quo totam doloribus velit, voluptate deleniti accusamus minus laboriosam, beatae ipsa
-                  deserunt maiores iure exercitationem!"</p>
-            </div>
-         </div>
-         <div class="col-lg-6 p-5">
-            <div class="form-group">
-               <img src="<?= base_url('asset/Dastin.jpg'); ?>" class="img-fluid rounded-circle">
-               <span>Dastin Kurniawan</span>
-               <h5>Ahli Bidang Bahasa</h5>
-               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur officia quas incidunt
-                  impedit fugit quo totam doloribus velit, voluptate deleniti accusamus minus laboriosam, beatae ipsa
-                  deserunt maiores iure exercitationem!"</p>
-            </div>
-         </div>
-         <div class="col-lg-6 p-5">
-            <div class="form-group">
-               <img src="<?= base_url('asset/Tongkol.jpg'); ?>" class="img-fluid rounded-circle">
-               <span>Tongkol</span>
-               <h5>CEO PT.Angkasa Fakboy</h5>
-               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur officia quas incidunt
-                  impedit fugit quo totam doloribus velit, voluptate deleniti accusamus minus laboriosam, beatae ipsa
-                  deserunt maiores iure exercitationem!"</p>
-            </div>
-         </div>
-         <div class="col-lg-6 p-5">
-            <div class="form-group">
-               <img src="<?= base_url('asset/Mylove.jpg'); ?>" class="img-fluid rounded-circle">
-               <span>My Love</span>
-               <h5>CEO My Love</h5>
-               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur officia quas incidunt
-                  impedit fugit quo totam doloribus velit, voluptate deleniti accusamus minus laboriosam, beatae ipsa
-                  deserunt maiores iure exercitationem!"</p>
-            </div>
-         </div>
-
-         <div class="col-lg-6 p-5">
-            <div class="form-group">
-               <img src="<?= base_url('asset/Mylove2.jpg'); ?>" class="img-fluid rounded-circle">
-               <span>My Love</span>
-               <h5>CEO My Love</h5>
-               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur officia quas incidunt
-                  impedit fugit quo totam doloribus velit, voluptate deleniti accusamus minus laboriosam, beatae ipsa
-                  deserunt maiores iure exercitationem!"</p>
-            </div>
-         </div>
+         <?php endforeach; ?>
       </div>
    </div>
 </section>
