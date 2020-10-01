@@ -80,7 +80,36 @@ class Home extends CI_Controller
    {
       $this->session->unset_userdata('email');
       $this->session->unset_userdata('role_id');
-      // $this->session->set_flashdata();
       redirect('Home');
+   }
+
+   public function tambahCart()
+   {
+      $data = [
+         'email' => $this->input->post('email'),
+         'gambar' => $this->input->post('gambar'),
+         'title' => $this->input->post('title'),
+         'hargaAwal' => $this->input->post('hargaAwal'),
+         'hargaAkhir' => $this->input->post('hargaAkhir'),
+         'qty' => 1,
+      ];
+
+      $users = $this->db->get_where('cart', ['title' => $this->input->post('title')])->row_array();
+
+      if ($users['title'] == $this->input->post('title')) {
+         $this->db->set('qty', $users['qty'] + 1);
+         $this->db->where('title', $this->input->post('title'));
+         $this->db->update('cart');
+         echo "Berhasil diubah";
+         return false;
+      }
+
+      $this->db->insert('cart', $data);
+      echo "Berhasil ditambahkan!";
+   }
+
+   public function cartItem()
+   {
+      echo $this->db->get_where('cart', ['email' => $this->input->post('email')])->num_rows();
    }
 }

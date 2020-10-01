@@ -19,8 +19,6 @@ $(document).ready(function () {
       $('body, html').animate({
          'scrollTop': Tujuan.offset().top - 150
       }, 1000);
-
-
    });
 
    $('.scroll2').on('click', function (e) {
@@ -80,7 +78,50 @@ $(document).ready(function () {
       dots: true,
    });
 
-})
+   $('form').on('submit', function (e) {
+      e.preventDefault();
+      let gambar = $(this)[0][0].value; //this get gambar
+      let title = $(this)[0][1].value; //this get title
+      let hargaAwal = $(this)[0][2].value; //this get hargaAwal
+      let hargaAkhir = $(this)[0][3].value; //this get hargaAkhir
+      let email = $(this)[0][4].value; //this get title
+
+      $.ajax({
+         url: 'http://localhost/Bikes_CI/Home/tambahCart',
+         data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email },
+         type: 'POST',
+         success: () => {
+            Swal.fire(
+               'Berhasil!',
+               'Ditambahkan',
+               'success'
+            )
+            setTimeout(() => {
+               $('.swal2-container').remove();
+               $('body').toggleClass('swal2-shown swal2-height-auto');
+            }, 2000)
+            Counter();
+         }
+      });
+   })
+
+   Counter();
+   function Counter() {
+      let email = $('.email').val();
+      $.ajax({
+         url: 'http://localhost/Bikes_CI/Home/cartItem',
+         data: { email: email },
+         type: 'POST',
+         success: (data) => {
+            $('#cartItem').html(data);
+         }
+      })
+   }
+
+
+});
+
+
 
 
 

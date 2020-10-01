@@ -25,13 +25,12 @@
 
             <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
                <i class="fas fa-shopping-cart">
-                  <span>0</span>
+                  <span id="cartItem"></span>
                </i>
             </a>
             </div>
          </div>
 </nav>
-
 
 <nav class="navbar navbar2 navbar-expand-lg navbar-light bg">
    <div class="container">
@@ -164,7 +163,6 @@
 </div>
 <!-- Akhir Description -->
 
-
 <!-- Kategories -->
 <section id="Kategori">
    <div class="container CCategories">
@@ -217,7 +215,19 @@
                   <span class="meta__price"><?= $produk['harga']; ?></span>
                </div>
 
-               <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
+               <?php if (isset($email)) : ?>
+                  <form>
+                     <input type="hidden" value="<?= $produk['gambar']; ?>">
+                     <input type="hidden" value="<?= $produk['title']; ?>">
+                     <input type="hidden" value="<?= $produk['harga']; ?>">
+                     <input type="hidden" value="<?= $produk['harga']; ?>">
+                     <input type="hidden" class="email" value="<?= $email; ?>">
+                     <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
+                  </form>
+               <?php else : ?>
+                  <a href="<?= base_url('Login'); ?>" class="action2 action--button action--buy"><i class="fas fa-heart"></i></a>
+               <?php endif; ?>
+
                <?php if (isset($email)) : ?>
                   <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
                <?php else : ?>
