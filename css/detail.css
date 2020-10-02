@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Nunito:wght@200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Kalam:wght@300&display=swap');
+/* Navbar */
+
+.navbar1 {
+   background: white;
+   box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+}
+
+
+.userButton {
+   box-shadow: 0 10px 10px -5px white;
+   border: 1px solid grey;
+   background: white;
+   border-radius: 4px;
+   width: 100px;
+   box-sizing: border-box;
+   text-align: center;
+   overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   position: absolute;
+   z-index: -99999;
+   visibility: hidden;
+   opacity: 0;
+   right: 0px;
+   transition: .3s;
+   transform: translateY(-5px);
+}
+
+.userButton.active {
+   z-index: 99999;
+   transform: translateY(0);
+   visibility: visible;
+   opacity: 1;
+}
+
+.userButton a {
+   margin: 0 !important;
+   padding: 3px 30px;
+   text-decoration: none;
+   color: grey;
+   font-family: 'Nunito';
+   font-weight: bold;
+   transition: .3s;
+   position: relative;
+}
+
+.userButton a:nth-child(1):after {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 1px;
+   background: grey;
+}
+
+.userButton a:hover {
+   background: rgba(0, 0, 0, .2);
+}
+
+.gambarUser {
+   position: absolute;
+   top: 8px;
+   left: -20px;
+   z-index: -1;
+}
+
+
+img {
+   object-fit: cover;
+}
+
+.img-fluid {
+   cursor: grab;
+}
+
+.img-fluid:active {
+   cursor: grabbing;
+}
+
+.navbar-brand {
+   text-transform: uppercase;
+   font-family: 'Anton', sans-serif;
+   font-size: 25px;
+}
+
+.navbar-nav a {
+   font-family: 'Roboto', sans-serif;
+   font-weight: bold;
+   transition: color .3s;
+}
+
+.navbar-nav1 a:hover {
+   color: black !important;
+}
+
+.cart::before {
+   content: '';
+   display: block;
+   position: absolute;
+   top: 7px;
+   right: 45px;
+   width: 1px;
+   height: 25px;
+   background: grey;
+}
+
+.linkEffect::after {
+   content: '';
+   display: block;
+   margin-top: 2px;
+   width: 0;
+   height: 2px;
+   background:  rgb(0, 0, 0) !important;
+   transition: .3s;
+}
+
+.linkEffect:hover::after {
+   width: 100%;
+   transition: width .3s;
+}
+
+/* Akhir Navbar */
+
+
+/* Images */
+.slick-slide {
+   outline: none
+}
+
+.slick-dots {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 20px;
+  left: 5px;
+}
+
+.dot {
+   display: block;
+   width: 15px;
+   height: 15px;
+   text-decoration: none;
+   border: 1px solid gray;
+   border-radius: 50%;
+   cursor: pointer;
+   margin-right: 5px; 
+}
+
+.slick-active .dot {
+   background-color: gray;
+ }
+/* Akhir Images */
+
+
+body {
+   overflow-x: hidden !important;
+}
+
+.Section {
+   margin-top: 150px;
+}
+
+.judul {
+   font-family: 'Kalam', sans-serif;
+}
+
+h5 {
+   font-weight: 400;
+}
+
+.btn {
+   font-family: 'Nunito', sans-serif;
+   font-weight: bold;
+}
+
+.form-inline .form-control {
+   display: inline-block;
+   width: 100px;
+   vertical-align: middle;
+}
+
+.form-inline label {
+   margin-right: 20px;
+}
+
+.judul:after {
+   content: '';
+   display: block;
+   width: 98%;
+   height: 2px;
+   background: black;
+   border-radius: 4px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.fa-angle-double-left {
+   margin-right: 15px;
+   margin-bottom: 10px;
+   color: black;
+}
+
+.harga {
+   font-family: 'Poppins';
+}
+
+.harga h4 {
+   font-weight: 100;
+}
+
+.harga span {
+   font-size: 18px;
+}
+
+.stock {
+   margin-top: 15px;
+}
+
+.Footer {
+   padding: 20px;
+   width: 100% !important;
+   position: absolute;
+   bottom: 0px;
+}
+
+.Footer p {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   font-family: 'Nunito', sans-serif;
+   font-weight: bold;
+}
+
+
+.swal2-styled.swal2-confirm {
+   display: none !important;
+}
+
+.swal2-popup {
+   width: 25em !important;
+   padding: 0 !important;
+   box-shadow: 0 0 10px -5px #1641ff;
+}
+
+
+@media (max-width: 991px) { 
+   .navbar-nav {
+      flex-direction: row;
+   }
+
+   .gambarUser {
+      left: -30px;
+   }
+
+   .userButton {
+      right: 10px;
+   }   
+
+   .navbar-brand {
+      margin-left: 20px;
+   }
+
+   .navbar-nav a {
+      margin: 0 15px;
+   }
+}
+
+@media (max-width: 770px) {
+   .Footer {
+      position: static;
+   }
+}
+
+@media (max-width: 576px) {
+   body {
+      overflow-x: hidden !important;
+   }
+
+   .Isi  {
+      padding: 25px;
+   }
+
+   .Section {
+      margin-top: 20px;
+   }
+
+   .judul h1 {
+      font-size: 30px;
+   }
+
+   .addProduct {
+      width: 100%;
+   }
+
+   .formQty label {
+      margin-right: 25px !important;
+   }
+   
+   .formQty label, .stock {
+      font-size: 14px;
+      margin-top: 10px;
+   }
+}
+
+@media (max-width: 426px)  {
+   .Qty {
+      width: 180px !important;
+   }
+
+   .formQty label {
+      margin-right: 10px;
+   }
+
+   .stock {
+      margin-top: 10px;
+   }
+}
+
+@media (max-width: 384px) {
+   .Qty {
+      width: 120px !important;
+   }
+}

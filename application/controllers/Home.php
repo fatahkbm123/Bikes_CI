@@ -9,7 +9,7 @@ class Home extends CI_Controller
       $data['script'] = 'home.js';
       $data['email'] = $this->session->userdata('email');
       $data['users'] = $this->db->get_where('users', ['email' => $data['email']])->row_array();
-      $data['product'] = $this->db->get('product')->result_array();
+      $data['product'] = $this->db->get('product', 3)->result_array();
       $data['carousel'] = ['asset/foto4.jpg', 'asset/foto3.jpg', 'asset/foto6.jpg'];
       $data['testimonial'] = [
          [
@@ -94,12 +94,18 @@ class Home extends CI_Controller
          'qty' => 1,
       ];
 
+      $productID = $this->db->get_where('product', ['id' => $this->input->post('id')])->row_array();
+      $this->db->set('jmlProduk', $productID['jmlProduk'] - 1);
+      $this->db->where('id', $this->input->post('id'));
+      $this->db->update('product');
+
       $users = $this->db->get_where('cart', ['title' => $this->input->post('title')])->row_array();
 
       if ($users['title'] == $this->input->post('title')) {
          $this->db->set('qty', $users['qty'] + 1);
          $this->db->where('title', $this->input->post('title'));
          $this->db->update('cart');
+
          echo "Berhasil diubah";
          return false;
       }

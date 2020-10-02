@@ -547,12 +547,6 @@ body {
    font-size: 45px !important;
 }
 
-
-.RLoad {
-   margin-top: 50px;
-   margin-bottom: 100px;
-}
-
 .grid .slider img {
    object-fit: cover;
    cursor: grab;

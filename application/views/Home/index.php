@@ -195,10 +195,10 @@
    </div>
 </div>
 
-<div class="container" style="position:relative;">
+<div class="container" style="position:relative; margin-bottom: 200px;">
 
    <div class="row contentProduk notFoundProduk">
-      <div class=" grid">
+      <div class="grid">
 
          <?php foreach ($product as $produk) : ?>
             <div class="grid__item">
@@ -215,12 +215,14 @@
                   <span class="meta__price"><?= $produk['harga']; ?></span>
                </div>
 
+
                <?php if (isset($email)) : ?>
                   <form>
-                     <input type="hidden" value="<?= $produk['gambar']; ?>">
-                     <input type="hidden" value="<?= $produk['title']; ?>">
-                     <input type="hidden" value="<?= $produk['harga']; ?>">
-                     <input type="hidden" value="<?= $produk['harga']; ?>">
+                     <input type="hidden" class="id" value="<?= $produk['id']; ?>">
+                     <input type="hidden" class="gambar" value="<?= $produk['gambar']; ?>">
+                     <input type="hidden" class="title" value="<?= $produk['title']; ?>">
+                     <input type="hidden" class="hargaAwal" value="<?= $produk['harga']; ?>">
+                     <input type="hidden" class="hargaAkhir" value="<?= $produk['harga']; ?>">
                      <input type="hidden" class="email" value="<?= $email; ?>">
                      <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
                   </form>
@@ -229,26 +231,12 @@
                <?php endif; ?>
 
                <?php if (isset($email)) : ?>
-                  <a href="Detail/detail.html" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+                  <a href="<?= base_url('Detail/index/') . $produk['id'] ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
                <?php else : ?>
                   <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
                <?php endif; ?>
             </div>
          <?php endforeach; ?>
-      </div>
-   </div>
-
-   <div class="row RLoad">
-      <div class="col-12 text-center">
-         <a href="#" class="btn btn-outline-info shadow Load">Load More</a>
-      </div>
-   </div>
-
-   <div class="row" style="position: relative;">
-      <div class="col-12 loader m-auto justify-content-center align-center">
-         <div class="circle"></div>
-         <div class="circle"></div>
-         <div class="circle"></div>
       </div>
    </div>
 </div>

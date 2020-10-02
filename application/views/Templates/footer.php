@@ -9,7 +9,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<script src="js/<?= $script; ?>"></script>
+<script src="<?= base_url('js/') . $script ?>"></script>
 </body>
 
 </html>

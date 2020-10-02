@@ -17,7 +17,7 @@
    <!-- Add the slick-theme.css if you want default styling -->
    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
-   <link rel="stylesheet" href="css/<?= $css; ?>">
+   <link rel="stylesheet" href="<?= base_url('css/') . $css ?>">
 </head>
 
 <body id="Home">

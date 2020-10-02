@@ -42,16 +42,6 @@ $(document).ready(function () {
       $('body').removeClass('fixed');
    })
 
-   $('.Load').on('click', function (e) {
-      e.preventDefault();
-      $(this).addClass('hide');
-      $('.loader').addClass('show');
-      setTimeout(() => {
-         $('.loader').removeClass('show');
-         $('.Load').removeClass('hide');
-      }, 2000)
-   });
-
    $('.grid__item').hover(function () {
       $(this).toggleClass('active');
    })
@@ -80,17 +70,20 @@ $(document).ready(function () {
 
    $('form').on('submit', function (e) {
       e.preventDefault();
-      let gambar = $(this)[0][0].value; //this get gambar
-      let title = $(this)[0][1].value; //this get title
-      let hargaAwal = $(this)[0][2].value; //this get hargaAwal
-      let hargaAkhir = $(this)[0][3].value; //this get hargaAkhir
-      let email = $(this)[0][4].value; //this get title
+      let form = $(this).closest('form');
+      let gambar = form.find('.gambar').val();
+      let title = form.find('.title').val();
+      let hargaAwal = form.find('.hargaAwal').val();
+      let hargaAkhir = form.find('.hargaAkhir').val();
+      let email = $('.email').val();
+      let id = form.find('.id').val();
 
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/tambahCart',
-         data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email },
+         data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email, id: id },
          type: 'POST',
-         success: () => {
+         success: (data) => {
+            console.log(data);
             Swal.fire(
                'Berhasil!',
                'Ditambahkan',
@@ -117,8 +110,6 @@ $(document).ready(function () {
          }
       })
    }
-
-
 });
 
 
