@@ -46,6 +46,90 @@ $(document).ready(function () {
       $(this).toggleClass('active');
    })
 
+   $('form').on('submit', function (e) {
+      e.preventDefault();
+      let form = $(this).closest('form');
+      let gambar = form.find('.gambar').val();
+      let title = form.find('.title').val();
+      let hargaAwal = form.find('.hargaAwal').val();
+      let hargaAkhir = form.find('.hargaAkhir').val();
+      let email = $('.email').val();
+      let id = form.find('.id').val();
+
+      $.ajax({
+         url: 'http://localhost/Bikes_CI/Home/tambahCart',
+         data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email, id: id },
+         type: 'POST',
+         success: (data) => {
+            console.log(data);
+            Swal.fire(
+               'Berhasil!',
+               'Ditambahkan',
+               'success'
+            )
+
+            setTimeout(() => {
+               $('.swal2-container').remove();
+               $('body').toggleClass('swal2-shown swal2-height-auto');
+            }, 2000)
+            loadDataCart();
+            Counter();
+         }
+      });
+   })
+
+   Counter();
+   function Counter() {
+      let email = $('.email').val();
+      $.ajax({
+         url: 'http://localhost/Bikes_CI/Home/cartItem',
+         data: { email: email },
+         type: 'POST',
+         success: (data) => {
+            $('#cartItem').html(data);
+            if (data == 0) {
+               $('.parentHover').html('<div class="contentHoverEmpty"><span>Keranjang Kamu masih kosong</span></div>');
+            } else {
+               $('.contentHoverEmpty').remove();
+               $('.parentHover').html(
+                  '<div class="contentHover"><div class="header"><p>Baru saja di tambahkan!</p></div><div class="uyu"></div><div class="Btn"><a href="" class="btn btn-outline-danger d-block CekKeranjang">Check Keranjang</a></div></div>'
+               );
+            }
+            loadDataCart();
+         }
+      })
+   }
+
+   $('.hoverCart').hover(function () {
+      $('.parentHover').toggleClass('active');
+   });
+
+   $(document).on('click', '.hapusCart', function (e) {
+      e.preventDefault()
+      let id = $(this).data('id');
+      let email = $('.email').val();
+
+      let elemen = $(this).parent();
+      $.ajax({
+         url: 'http://localhost/Bikes_CI/Home/deleteCart',
+         data: { id: id, email: email },
+         type: 'POST',
+         success: (data) => {
+            var dataResponse = JSON.parse(data);
+            console.log(data);
+            if (dataResponse.statusCode == 200) {
+               elemen.fadeOut().remove();
+            }
+
+            if (data === '0') {
+               $('.parentHover').html('<div class="contentHoverEmpty"><span>Keranjang Kamu masih kosong</span></div>');
+            }
+            loadDataCart();
+            Counter();
+         }
+      })
+   });
+
    $('.center').slick({
       autoplay: true,
       autoplaySpeed: 2000,
@@ -68,52 +152,19 @@ $(document).ready(function () {
       dots: true,
    });
 
-   $('form').on('submit', function (e) {
-      e.preventDefault();
-      let form = $(this).closest('form');
-      let gambar = form.find('.gambar').val();
-      let title = form.find('.title').val();
-      let hargaAwal = form.find('.hargaAwal').val();
-      let hargaAkhir = form.find('.hargaAkhir').val();
+   loadDataCart();
+   function loadDataCart() {
       let email = $('.email').val();
-      let id = form.find('.id').val();
-
       $.ajax({
-         url: 'http://localhost/Bikes_CI/Home/tambahCart',
-         data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email, id: id },
+         url: 'http://localhost/Bikes_CI/Home/loadData',
          type: 'POST',
-         success: (data) => {
-            console.log(data);
-            Swal.fire(
-               'Berhasil!',
-               'Ditambahkan',
-               'success'
-            )
-            setTimeout(() => {
-               $('.swal2-container').remove();
-               $('body').toggleClass('swal2-shown swal2-height-auto');
-            }, 2000)
-            Counter();
-         }
-      });
-   })
-
-   Counter();
-   function Counter() {
-      let email = $('.email').val();
-      $.ajax({
-         url: 'http://localhost/Bikes_CI/Home/cartItem',
          data: { email: email },
-         type: 'POST',
          success: (data) => {
-            $('#cartItem').html(data);
+            $('.uyu').html(data);
          }
       })
    }
 
-   $('.hoverCart').hover(function () {
-      $('.parentHover').toggleClass('active');
-   });
 
 });
 

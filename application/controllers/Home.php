@@ -71,6 +71,7 @@ class Home extends CI_Controller
             'scroll' => 'scroll'
          ],
       ];
+      $data['rows'] = $this->db->get_where('cart', ['email' => $data['email']])->num_rows();
       $data['cart'] = $this->db->get_where('cart', ['email' => $data['email']])->result_array();
       $this->load->view('Templates/header', $data);
       $this->load->view('Home/index', $data);
@@ -118,5 +119,39 @@ class Home extends CI_Controller
    public function cartItem()
    {
       echo $this->db->get_where('cart', ['email' => $this->input->post('email')])->num_rows();
+   }
+
+
+
+   public function deleteCart()
+   {
+      $query = $this->db->delete('cart', ['id' => $this->input->post('id')]);
+      $rows = $this->db->get_where('cart', ['email' => $this->input->post('email')])->num_rows();
+      if ($query) {
+         // echo json_encode(array("statusCode" => 200));
+         echo $rows;
+      }
+   }
+
+   public function loadData()
+   {
+      $email = $this->input->post('email');
+      $data = $this->db->get_where('cart', ['email' => $email])->result_array();
+      foreach ($data as $cartProduct) {
+         echo '<div class="content">
+               <!-- nama gambar -->
+               <img src="' . base_url('asset/FotoProduct/') . $cartProduct['gambar'] . '" width="50">
+               <!-- nama produk -->
+               <span>' . $cartProduct['title'] . '</span>
+               <!-- jumlahnya -->
+               <span class="jmlProduk ml-auto"><span>' . $cartProduct['qty'] . '</span>x</span>
+               <!-- Aksi => hapus -->
+               <a href="" class="hapusCart" data-id="' . $cartProduct['id'] . '">Hapus</a>
+            </div>';
+      }
+   }
+
+   public function rowsCart()
+   {
    }
 }

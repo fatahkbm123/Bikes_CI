@@ -22,50 +22,28 @@
                <a class="nav-item nav-link linkEffect" href="<?= base_url('Login'); ?>">Sign In</a>
             <?php endif; ?>
 
-            <?php if (!empty($cart)) : ?>
-               <div style="position: relative" class="hoverCart">
-                  <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
-                     <i class="fas fa-shopping-cart">
-                        <span id="cartItem"></span>
-                     </i>
-                  </a>
-                  <div class="parentHover" style="position: absolute;">
-                     <div class="contentHover">
-                        <div class="header">
-                           <p>Baru saja di tambahkan!</p>
-                        </div>
-                        <?php foreach ($cart as $cartProduct) : ?>
-                           <div class="content">
-                              <!-- nama gambar -->
-                              <img src="<?= base_url('asset/FotoProduct/') . $cartProduct['gambar'] ?>" width="50">
-                              <!-- nama produk -->
-                              <span><?= $cartProduct['title']; ?></span>
-                              <!-- jumlahnya -->
-                              <span class="jmlProduk ml-auto"><span><?= $cartProduct['qty']; ?></span>x</span>
-                              <!-- Aksi => hapus -->
-                              <a href="">Hapus</a>
-                           </div>
-                        <?php endforeach; ?>
-                        <div class="Btn">
-                           <a href="" class="btn btn-outline-danger d-block CekKeranjang">Check Keranjang</a>
-                        </div>
+            <div style="position: relative" class="hoverCart">
+               <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
+                  <i class="fas fa-shopping-cart">
+                     <span id="cartItem" style="font-family: 
+                     Nunito;"></span>
+                  </i>
+               </a>
+
+               <div class="parentHover" style="position: absolute;">
+                  <div class="contentHover">
+                     <div class="header">
+                        <p>Baru saja di tambahkan!</p>
+                     </div>
+
+                     <div class="uyu"></div>
+
+                     <div class="Btn">
+                        <a href="" class="btn btn-outline-danger d-block CekKeranjang">Check Keranjang</a>
                      </div>
                   </div>
                </div>
-            <?php else : ?>
-               <div style="position: relative" class="hoverCart">
-                  <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
-                     <i class="fas fa-shopping-cart">
-                        <span id="cartItem"></span>
-                     </i>
-                  </a>
-                  <div class="parentHover" style="position: absolute;">
-                     <div class="contentHoverEmpty">
-                        <span>Keranjang Kamu masih kosong</span>
-                     </div>
-                  </div>
-               </div>
-            <?php endif; ?>
+            </div>
 
             </div>
          </div>

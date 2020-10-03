@@ -50,6 +50,7 @@ body {
    position: relative;
    box-shadow: 0 0 5px grey;
    z-index: 1;
+   overflow: auto;
 }
 
 .Btn .CekKeranjang {
@@ -120,7 +121,7 @@ body {
 
 .parentHover {
    top: 55px;
-   right: -3px;
+   right: -1px;
    visibility: hidden;
    opacity: 0;
    transition: .3s;
@@ -1286,7 +1287,7 @@ body {
    }   
 
    .parentHover {
-      right: 4px;
+      right: 6px;
    }
    
    .Btn {
