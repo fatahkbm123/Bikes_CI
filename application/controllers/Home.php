@@ -71,6 +71,7 @@ class Home extends CI_Controller
             'scroll' => 'scroll'
          ],
       ];
+      $data['cart'] = $this->db->get_where('cart', ['email' => $data['email']])->result_array();
       $this->load->view('Templates/header', $data);
       $this->load->view('Home/index', $data);
       $this->load->view('Templates/footer', $data);

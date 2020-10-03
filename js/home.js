@@ -110,6 +110,11 @@ $(document).ready(function () {
          }
       })
    }
+
+   $('.hoverCart').hover(function () {
+      $('.parentHover').toggleClass('active');
+   });
+
 });
 
 

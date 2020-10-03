@@ -18,19 +18,6 @@ $('.btnUser').on('click', function (e) {
    $('.userButton').toggleClass('active');
 })
 
-Counter();
-function Counter() {
-   let email = $('.email').val();
-   $.ajax({
-      url: 'http://localhost/Bikes_CI/Home/cartItem',
-      data: { email: email },
-      type: 'POST',
-      success: (data) => {
-         $('#cartItem').html(data);
-      }
-   })
-}
-
 let jmlProduk = parseInt($('.jmlProduk').data('jmlproduk'));
 let Qty = document.querySelector('.Qty');
 let harga = document.querySelector('.harga');
@@ -67,16 +54,18 @@ $('form').on('submit', function (e) {
    let gambar = $('.jumbo').attr('data-gambar');
    let jumlahProduk = $('.Qty2').val();
    let email = $('.email').val();
+   let id = $('.id').val();
 
    $.ajax({
       url: 'http://localhost/Bikes_CI/Detail/tambahCart',
       data: {
          hargaAwal: hargaAwal, hargaAkhir: hargaAkhir,
          title: title, gambar: gambar,
-         jmlProduk: jumlahProduk, email: email
+         jmlProduk: jumlahProduk, email: email,
+         id: id
       },
       type: 'POST',
-      success: () => {
+      success: (data) => {
          Swal.fire({
             title: 'Berhasil!',
             text: 'Ditambahkan',
@@ -91,7 +80,14 @@ $('form').on('submit', function (e) {
             $('body').toggleClass('swal2-shown swal2-height-auto');
          }, 2000)
          Counter();
-         setQty();
+         if (data === '0') {
+            $('.stock').html('Stock sudah terjual habis.');
+            $('.pBtn').html('<button disabled class="btn btn-outline-primary p-2 mt-3 addProduct"><i class="fas fa-cart-plus">&nbsp;</i> Masukkan Keranjang</button>')
+            Qty.value = 0;
+         }
+         $('.jmlProduk').html(parseInt(data));
+         jmlProduk -= parseInt(Qty2.value);
+         console.log(data);
       }
    })
 })
@@ -109,29 +105,11 @@ function Counter() {
    })
 }
 
-function setQty() {
-   let id = $('.id').val();
-   let jumlahProduk = $('.Qty2').val();
-
-   $.ajax({
-      url: 'http://localhost/Bikes_CI/Detail/setQty',
-      data: { id: id, qty: jumlahProduk },
-      type: 'POST',
-      success: (data) => {
-         if (data === '0') {
-            $('.stock').html('Stock sudah terjual habis.');
-            $('.pBtn').html('<button disabled class="btn btn-outline-primary p-2 mt-3 addProduct"><i class="fas fa-cart-plus">&nbsp;</i> Masukkan Keranjang</button>')
-            Qty.value = 0;
-         }
-         $('.jmlProduk').html(parseInt(data));
-         jmlProduk -= parseInt(Qty2.value);
-      }
-   })
-}
-
 if (jmlProduk == 0) {
    $('.stock').html('Stock sudah terjual habis.');
    $('.pBtn').html('<button disabled class="btn btn-outline-primary p-2 mt-3 addProduct"><i class="fas fa-cart-plus">&nbsp;</i> Masukkan Keranjang</button>');
    Qty.value = 0;
 }
+
+
 

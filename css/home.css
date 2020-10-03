@@ -5,7 +5,138 @@
 
 body {
    overflow-x: hidden;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
+
+/* CartEmpty */
+.contentHoverEmpty {
+   border: 1px solid grey;
+   width: 300px;
+   height: 100px;
+   border-radius: 4px;
+   background: white;
+   position: relative;
+   box-shadow: 0 0 5px grey;
+   z-index: 1;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   font-family: Nunito;
+   font-weight: bold;
+   text-transform: uppercase;
+   font-size: 14px;
+}
+
+/* ContentHover */
+.parentHover:after {
+   content: '';
+   width: 40px;
+   height: 25px;
+   position: absolute;
+   top: -20px;
+   right: 10px;
+   background: grey;
+   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+   box-shadow: 0 0 5px grey;
+}
+
+.contentHover {
+   border: 1px solid grey;
+   width: 300px;
+   border-radius: 4px;
+   background: white;
+   position: relative;
+   box-shadow: 0 0 5px grey;
+   z-index: 1;
+}
+
+.Btn .CekKeranjang {
+   transition: .3s;
+}
+
+.Btn .CekKeranjang:hover {
+   color: white !important;
+}
+
+.contentHover .content {
+   display: flex;
+   align-items: center;
+   margin-top: -15px;
+   margin-bottom: 5px;
+   position: relative;
+}
+
+.contentHover .content:after {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   transform-origin: right;
+   width: 0%;
+   height: 100%;
+   background: rgba(0, 0, 0, .1);
+   transition: .3s ease-in;
+   transition-delay: .1;
+   z-index: -1;
+}
+
+.contentHover .content:hover:after {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   transform-origin: left;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, .1);
+}
+
+.Btn {
+   margin-top: -5px;
+   padding: 5px;
+   width: 100%;
+}
+
+.contentHover .header {
+   margin: 0;
+   padding: 5px;
+   position: relative;
+   overflow: hidden;
+   font-family: 'Nunito';
+   font-weight: bold;
+}
+
+.header::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   bottom: 15px;
+   width: 110%;
+   height: 1px;
+   background: black;
+}
+
+.parentHover {
+   top: 55px;
+   right: -3px;
+   visibility: hidden;
+   opacity: 0;
+   transition: .3s;
+   transform: translateY(5px);
+}
+
+.parentHover.active {
+   transform: translateY(0);
+   visibility: visible;
+   opacity: 1;
+}
+
+.content img, .content .jmlProduk, .content a{
+   margin: 10px;
+}
+
 
 .swal2-styled.swal2-confirm {
    display: none !important;
@@ -545,6 +676,29 @@ body {
 
 .ourProduct span {
    font-size: 45px !important;
+}
+
+.textHabis {
+   position: absolute;
+   top: 80px;
+   left: 95px;
+   background: white;
+   border-radius: 4px;
+   padding: 10px;
+   color: black;
+   text-transform: uppercase;
+   font-family: 'Poppins';
+   font-weight: bold;
+   visibility: hidden;
+   opacity: 0;
+   transform: translateY(-5px);
+   transition: .3s;
+}
+
+.grid__item.active .textHabis {
+   visibility: visible;
+   opacity: 1;
+   transform: translateY(0px)
 }
 
 .grid .slider img {
@@ -1131,6 +1285,17 @@ body {
       right: 10px;
    }   
 
+   .parentHover {
+      right: 4px;
+   }
+   
+   .Btn {
+      margin-top: -5px;
+      margin-left: -6.5px;
+      padding: 5px 0;
+      width: 105%;
+   }
+
    /* Navbar */
    .navbar-brand {
       margin-left: 20px;
@@ -1480,6 +1645,21 @@ body {
 }
 
 @media (max-width: 576px) {
+   .textHabis {
+      position: absolute;
+      top: 60px;
+      left: 70px;
+      background: white;
+      border-radius: 4px;
+      padding: 10px;
+      color: black;
+      text-transform: uppercase;
+      font-family: 'Poppins';
+      font-weight: bold;
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0px);
+   }
 
    .navbarResponsive .form-inline a {
       font-size: 22px;

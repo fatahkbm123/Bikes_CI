@@ -22,12 +22,51 @@
                <a class="nav-item nav-link linkEffect" href="<?= base_url('Login'); ?>">Sign In</a>
             <?php endif; ?>
 
+            <?php if (!empty($cart)) : ?>
+               <div style="position: relative" class="hoverCart">
+                  <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
+                     <i class="fas fa-shopping-cart">
+                        <span id="cartItem"></span>
+                     </i>
+                  </a>
+                  <div class="parentHover" style="position: absolute;">
+                     <div class="contentHover">
+                        <div class="header">
+                           <p>Baru saja di tambahkan!</p>
+                        </div>
+                        <?php foreach ($cart as $cartProduct) : ?>
+                           <div class="content">
+                              <!-- nama gambar -->
+                              <img src="<?= base_url('asset/FotoProduct/') . $cartProduct['gambar'] ?>" width="50">
+                              <!-- nama produk -->
+                              <span><?= $cartProduct['title']; ?></span>
+                              <!-- jumlahnya -->
+                              <span class="jmlProduk ml-auto"><span><?= $cartProduct['qty']; ?></span>x</span>
+                              <!-- Aksi => hapus -->
+                              <a href="">Hapus</a>
+                           </div>
+                        <?php endforeach; ?>
+                        <div class="Btn">
+                           <a href="" class="btn btn-outline-danger d-block CekKeranjang">Check Keranjang</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            <?php else : ?>
+               <div style="position: relative" class="hoverCart">
+                  <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
+                     <i class="fas fa-shopping-cart">
+                        <span id="cartItem"></span>
+                     </i>
+                  </a>
+                  <div class="parentHover" style="position: absolute;">
+                     <div class="contentHoverEmpty">
+                        <span>Keranjang Kamu masih kosong</span>
+                     </div>
+                  </div>
+               </div>
+            <?php endif; ?>
 
-            <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
-               <i class="fas fa-shopping-cart">
-                  <span id="cartItem"></span>
-               </i>
-            </a>
             </div>
          </div>
 </nav>
@@ -209,12 +248,12 @@
                      </div>
                   <?php endfor; ?>
                </div>
+
                <div class="meta">
                   <h3 class="meta__title"><?= $produk['title']; ?></h3>
                   <span class="meta__brand"><?= $produk['brand']; ?></span>
                   <span class="meta__price"><?= $produk['harga']; ?></span>
                </div>
-
 
                <?php if (isset($email)) : ?>
                   <form>
@@ -224,17 +263,17 @@
                      <input type="hidden" class="hargaAwal" value="<?= $produk['harga']; ?>">
                      <input type="hidden" class="hargaAkhir" value="<?= $produk['harga']; ?>">
                      <input type="hidden" class="email" value="<?= $email; ?>">
-                     <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
+                     <?php if ($produk['jmlProduk'] == 0) : ?>
+                        <p class="textHabis">Stock Habis</p>
+                     <?php else : ?>
+                        <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
                   </form>
-               <?php else : ?>
-                  <a href="<?= base_url('Login'); ?>" class="action2 action--button action--buy"><i class="fas fa-heart"></i></a>
-               <?php endif; ?>
-
-               <?php if (isset($email)) : ?>
                   <a href="<?= base_url('Detail/index/') . $produk['id'] ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-               <?php else : ?>
-                  <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
-               <?php endif; ?>
+               <?php endif ?>
+            <?php else : ?>
+               <a href="<?= base_url('Login'); ?>" class="action2 action--button action--buy"><i class="fas fa-heart"></i></a>
+               <a href="<?= base_url('Login'); ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
+            <?php endif; ?>
             </div>
          <?php endforeach; ?>
       </div>
@@ -294,6 +333,8 @@
    </div>
 </section>
 <!-- Akhir Testimonial -->
+
+
 
 <!-- Footer -->
 <div class="container-fluid Footer">
