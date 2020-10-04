@@ -74,6 +74,7 @@ $('form').on('submit', function (e) {
          })
 
          Qty.value = 1;
+         Qty2.value = 1;
 
          setTimeout(() => {
             $('.swal2-container').remove();

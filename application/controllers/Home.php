@@ -121,8 +121,6 @@ class Home extends CI_Controller
       echo $this->db->get_where('cart', ['email' => $this->input->post('email')])->num_rows();
    }
 
-
-
    public function deleteCart()
    {
       $query = $this->db->delete('cart', ['id' => $this->input->post('id')]);
@@ -151,7 +149,10 @@ class Home extends CI_Controller
       }
    }
 
-   public function rowsCart()
+   public function Ajax()
    {
+      $data['script'] = 'home.js';
+      $this->load->view('Ajax/index');
+      $this->load->view('Templates/footer', $data);
    }
 }

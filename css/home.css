@@ -73,6 +73,13 @@ body {
    font-size: 14px;
 }
 
+.fontProduk {
+   font-family: Poppins;
+   font-weight: bold;
+   text-transform: uppercase;
+   margin-top: 20px;
+   text-shadow: 10px 10px 5px rgba(0, 0, 0, .3);
+}
 /* ContentHover */
 .parentHover:after {
    content: '';
@@ -110,6 +117,7 @@ body {
    margin-top: -15px;
    margin-bottom: 5px;
    position: relative;
+   overflow: auto;
 }
 
 .contentHover .content:after {
@@ -169,7 +177,6 @@ body {
    opacity: 0;
    transition: .3s;
    transform: translateY(5px);
-   overflow: auto;
 }
 
 .parentHover.active {

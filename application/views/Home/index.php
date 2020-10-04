@@ -242,7 +242,7 @@
                      <input type="hidden" class="hargaAkhir" value="<?= $produk['harga']; ?>">
                      <input type="hidden" class="pcode" value="<?= $produk['pcode']; ?>">
                      <input type="hidden" class="email" value="<?= $email; ?>">
-                     <?php if ($produk['jmlProduk'] == 0) : ?>
+                     <?php if ($produk['jmlProduk'] < 1) : ?>
                         <p class="textHabis">Stock Habis</p>
                      <?php else : ?>
                         <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(window).on('load', function () {
    $('.hamburger-menu').on('click', function () {
       $('.navbarResponsive').addClass('active');
       $('body').addClass('fixed');
@@ -46,7 +46,7 @@ $(document).ready(function () {
       $(this).toggleClass('active');
    })
 
-   $('form').on('submit', function (e) {
+   $(document).on('submit', 'form', function (e) {
       e.preventDefault();
       let form = $(this).closest('form');
       let gambar = form.find('.gambar').val();
@@ -150,7 +150,9 @@ $(document).ready(function () {
             if (dataResponse.statusCode == 200) {
                elemen.remove();
                setTimeout(() => {
-                  $(this).parent().parent().addClass('active');
+                  $('.hoverCart').hover(function () {
+                     $('.parentHover').toggleClass('active');
+                  });
                }, 500)
             }
 
@@ -197,7 +199,41 @@ $(document).ready(function () {
          }
       })
    }
-});
+
+   load_data();
+   function load_data(query) {
+      let email = $('.email').val();
+      $.ajax({
+         url: 'http://localhost/Bikes_CI/Home/Ajax',
+         data: { query: query, email: email },
+         type: 'POST',
+         success: (data) => {
+            $('.grid').html(data);
+            $('.slider').slick({
+               infinite: false,
+               slidesToShow: 1,
+               slidesToScroll: 1,
+               arrows: false,
+               dots: true,
+            });
+            console.log(data);
+            $('.grid__item').hover(function () {
+               $(this).toggleClass('active');
+            })
+         }
+      })
+   }
+
+   $(document).on('keyup', '#Seacrh', function () {
+      let search = $(this).val();
+      if (search != '') {
+         load_data(search);
+      } else {
+         load_data();
+      }
+   })
+})
+
 
 
 
