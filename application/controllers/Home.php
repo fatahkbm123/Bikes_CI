@@ -94,6 +94,7 @@ class Home extends CI_Controller
          'hargaAwal' => $this->input->post('hargaAwal'),
          'hargaAkhir' => $this->input->post('hargaAkhir'),
          'qty' => 1,
+         'pcode' => $this->input->post('pcode')
       ];
 
       $productID = $this->db->get_where('product', ['id' => $this->input->post('id')])->row_array();
@@ -102,10 +103,9 @@ class Home extends CI_Controller
       $this->db->update('product');
 
       $users = $this->db->get_where('cart', ['title' => $this->input->post('title')])->row_array();
-
-      if ($users['title'] == $this->input->post('title')) {
+      if ($users['pcode'] == $this->input->post('pcode')) {
          $this->db->set('qty', $users['qty'] + 1);
-         $this->db->where('title', $this->input->post('title'));
+         $this->db->where('pcode', $this->input->post('pcode'));
          $this->db->update('cart');
 
          echo "Berhasil diubah";

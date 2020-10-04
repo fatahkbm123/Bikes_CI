@@ -10,6 +10,50 @@ body {
    box-sizing: border-box;
 }
 
+.addAnimation {
+   position: absolute;
+   background-color: black;
+   width: 8px;
+   height: 8px;
+   right: -10px;
+   top: -15px;
+   animation: cartAnimation 1s forwards;
+   transition: .3s;
+}
+
+@keyframes cartAnimation {
+   0% {
+      right: 0px;
+      top: -18px;
+      transform: rotate(90deg);
+      opacity: 1;
+      transform: scale(2);
+      border-radius: 0%;
+   } 25% {
+      transform: scale(1.7);
+      right: 10px;
+      top: -13px;
+      transform: rotate(180deg);
+      opacity: .8;
+      border-radius: 20%;
+   } 50% {
+      border-radius: 30%;
+      transform: scale(1.3);
+      opacity: .4;
+      right: 15px;
+      top: -8px;
+      transform: rotate(270deg);
+   } 100% {
+      border-radius: 40%;
+      transform: scale(1);
+      opacity: 0;
+      visibility: hidden;
+      right: 18px;
+      top: -3px;
+      transform: rotate(360deg);
+   }
+}
+
 /* CartEmpty */
 .contentHoverEmpty {
    border: 1px solid grey;
@@ -50,7 +94,6 @@ body {
    position: relative;
    box-shadow: 0 0 5px grey;
    z-index: 1;
-   overflow: auto;
 }
 
 .Btn .CekKeranjang {
@@ -126,6 +169,7 @@ body {
    opacity: 0;
    transition: .3s;
    transform: translateY(5px);
+   overflow: auto;
 }
 
 .parentHover.active {

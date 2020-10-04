@@ -5,7 +5,7 @@
 
       <?php if (isset($email)) : ?>
          <div class="navbar-nav navbar-nav1 align-items-center">
-            <div style="position: relative;">
+            <div class="UYE" style="position: relative;">
                <a href="" class="nav-item nav-link btnUser" style="position: relative;">
                   <?= $users['username']; ?>
                   <img src="<?= base_url('asset/default.jpg'); ?>" class="gambarUser img-thumbnail rounded-circle" width="25">
@@ -24,7 +24,7 @@
 
             <div style="position: relative" class="hoverCart">
                <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
-                  <i class="fas fa-shopping-cart">
+                  <i class="fas fa-shopping-cart KERANJANG" style="position: relative;">
                      <span id="cartItem" style="font-family: 
                      Nunito;"></span>
                   </i>
@@ -240,6 +240,7 @@
                      <input type="hidden" class="title" value="<?= $produk['title']; ?>">
                      <input type="hidden" class="hargaAwal" value="<?= $produk['harga']; ?>">
                      <input type="hidden" class="hargaAkhir" value="<?= $produk['harga']; ?>">
+                     <input type="hidden" class="pcode" value="<?= $produk['pcode']; ?>">
                      <input type="hidden" class="email" value="<?= $email; ?>">
                      <?php if ($produk['jmlProduk'] == 0) : ?>
                         <p class="textHabis">Stock Habis</p>

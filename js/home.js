@@ -53,12 +53,14 @@ $(document).ready(function () {
       let title = form.find('.title').val();
       let hargaAwal = form.find('.hargaAwal').val();
       let hargaAkhir = form.find('.hargaAkhir').val();
+      let pcode = form.find('.pcode').val();
       let email = $('.email').val();
       let id = form.find('.id').val();
 
+
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/tambahCart',
-         data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email, id: id },
+         data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email, id: id, pcode: pcode },
          type: 'POST',
          success: (data) => {
             console.log(data);
@@ -67,6 +69,15 @@ $(document).ready(function () {
                'Ditambahkan',
                'success'
             )
+
+            const cart = document.querySelector('.KERANJANG');
+            let span = document.createElement('span');
+            span.classList.add('addAnimation');
+            cart.appendChild(span);
+
+            setTimeout(() => {
+               $('.addAnimation').remove();
+            }, 1000)
 
             setTimeout(() => {
                $('.swal2-container').remove();
@@ -81,12 +92,16 @@ $(document).ready(function () {
    Counter();
    function Counter() {
       let email = $('.email').val();
+
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/cartItem',
          data: { email: email },
          type: 'POST',
          success: (data) => {
-            $('#cartItem').html(data);
+            setTimeout(() => {
+               $('#cartItem').html(data);
+            }, 1200)
+
             if (data == 0) {
                $('.parentHover').html('<div class="contentHoverEmpty"><span>Keranjang Kamu masih kosong</span></div>');
             } else {
@@ -94,6 +109,22 @@ $(document).ready(function () {
                $('.parentHover').html(
                   '<div class="contentHover"><div class="header"><p>Baru saja di tambahkan!</p></div><div class="uyu"></div><div class="Btn"><a href="" class="btn btn-outline-danger d-block CekKeranjang">Check Keranjang</a></div></div>'
                );
+            }
+
+            if (data < 10) {
+               $('.UYE').css({
+                  'right': '0px'
+               })
+               $('.KERANJANG').css({
+                  'left': '0px'
+               })
+            } else if (data > 9) {
+               $('.UYE').css({
+                  'right': '-10px'
+               })
+               $('.KERANJANG').css({
+                  'left': '12px'
+               })
             }
             loadDataCart();
          }
@@ -108,7 +139,6 @@ $(document).ready(function () {
       e.preventDefault()
       let id = $(this).data('id');
       let email = $('.email').val();
-
       let elemen = $(this).parent();
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/deleteCart',
@@ -118,7 +148,10 @@ $(document).ready(function () {
             var dataResponse = JSON.parse(data);
             console.log(data);
             if (dataResponse.statusCode == 200) {
-               elemen.fadeOut().remove();
+               elemen.remove();
+               setTimeout(() => {
+                  $(this).parent().parent().addClass('active');
+               }, 500)
             }
 
             if (data === '0') {
@@ -164,8 +197,6 @@ $(document).ready(function () {
          }
       })
    }
-
-
 });
 
 
