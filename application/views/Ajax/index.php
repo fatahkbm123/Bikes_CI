@@ -1,13 +1,9 @@
 <?php
 $ci = get_instance();
 
-if ($this->input->post('query') != '') {
-   $ci->db->like('title', $this->input->post('query'));
-   $ci->db->or_like('brand', $this->input->post('query'));
-   $data = $ci->db->get('product')->result_array();
-} else if ($this->input->post('query') == '') {
-   $data = $this->db->get('product', 3)->result_array();
-}
+$ci->db->like('title', $this->input->post('query'));
+$ci->db->or_like('brand', $this->input->post('query'));
+$data = $ci->db->get('product')->result_array();
 
 ?>
 
@@ -27,7 +23,6 @@ if ($this->input->post('query') != '') {
             <span class="meta__brand"><?= $produk['brand']; ?></span>
             <span class="meta__price"><?= $produk['harga']; ?></span>
          </div>
-         <?php $email = $this->input->post('email'); ?>
          <?php if (!empty($email)) : ?>
             <form>
                <input type="hidden" class="id" value="<?= $produk['id']; ?>">
@@ -37,12 +32,15 @@ if ($this->input->post('query') != '') {
                <input type="hidden" class="hargaAkhir" value="<?= $produk['harga']; ?>">
                <input type="hidden" class="pcode" value="<?= $produk['pcode']; ?>">
                <input type="hidden" class="email" value="<?= $email; ?>">
+               <input type="hidden" class="jmlProdukID" data-jmlproduk="<?= $produk['jmlProduk']; ?>">
+
+
                <?php if ($produk['jmlProduk'] < 1) : ?>
                   <p class="textHabis">Stock Habis</p>
                <?php else : ?>
                   <button class="action action--button action--buy"><i class="fas fa-heart"></i></button>
+                  <a href="<?= base_url('Detail/index/') . $produk['id'] ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
             </form>
-            <a href="<?= base_url('Detail/index/') . $produk['id'] ?>" class="detail"><i class="fas fa-long-arrow-alt-right"></i>Detail</a>
          <?php endif ?>
       <?php else : ?>
          <a href="<?= base_url('Login'); ?>" class="action2 action--button action--buy"><i class="fas fa-heart"></i></a>

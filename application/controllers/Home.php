@@ -9,8 +9,7 @@ class Home extends CI_Controller
       $data['script'] = 'home.js';
       $data['email'] = $this->session->userdata('email');
       $data['users'] = $this->db->get_where('users', ['email' => $data['email']])->row_array();
-      $data['product'] = $this->db->get('product', 3)->result_array();
-      $data['carousel'] = ['asset/foto4.jpg', 'asset/foto3.jpg', 'asset/foto6.jpg'];
+      $data['carousel'] = ['asset/foto4.jpg', 'asset/FotoProduct/sepeda1.jpg', 'asset/foto6.jpg'];
       $data['testimonial'] = [
          [
             'gambar' => 'asset/Me.jpg',
@@ -97,10 +96,11 @@ class Home extends CI_Controller
          'pcode' => $this->input->post('pcode')
       ];
 
-      $productID = $this->db->get_where('product', ['id' => $this->input->post('id')])->row_array();
+      $productID = $this->db->get_where('product', ['pcode' => $this->input->post('pcode')])->row_array();
       $this->db->set('jmlProduk', $productID['jmlProduk'] - 1);
-      $this->db->where('id', $this->input->post('id'));
+      $this->db->where('pcode', $this->input->post('pcode'));
       $this->db->update('product');
+      echo $productID['jmlProduk'];
 
       $users = $this->db->get_where('cart', ['title' => $this->input->post('title')])->row_array();
       if ($users['pcode'] == $this->input->post('pcode')) {
@@ -108,12 +108,10 @@ class Home extends CI_Controller
          $this->db->where('pcode', $this->input->post('pcode'));
          $this->db->update('cart');
 
-         echo "Berhasil diubah";
          return false;
       }
 
       $this->db->insert('cart', $data);
-      echo "Berhasil ditambahkan!";
    }
 
    public function cartItem()
@@ -151,8 +149,13 @@ class Home extends CI_Controller
 
    public function Ajax()
    {
-      $data['script'] = 'home.js';
-      $this->load->view('Ajax/index');
-      $this->load->view('Templates/footer', $data);
+      $data['email'] = $this->input->post('email');
+      $this->load->view('Ajax/index', $data);
+   }
+
+   public function itemProduct()
+   {
+      $data['email'] = $this->input->post('email');
+      $this->load->view('Ajax/itemProduct', $data);
    }
 }

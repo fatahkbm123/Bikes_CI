@@ -45,7 +45,7 @@ $('.minus').on('click', function (e) {
    }
 })
 
-$('form').on('submit', function (e) {
+$(document).on('submit', 'form', function (e) {
    e.preventDefault();
 
    let hargaAwal = $('.harga').attr('data-harga');
@@ -87,10 +87,9 @@ $('form').on('submit', function (e) {
             Qty.value = 0;
          }
          $('.jmlProduk').html(parseInt(data));
-         jmlProduk -= parseInt(Qty2.value);
-         console.log(data);
       }
    })
+   jmlProduk = jmlProduk - Qty.value;
 })
 
 Counter();

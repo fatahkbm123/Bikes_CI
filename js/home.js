@@ -57,13 +57,27 @@ $(window).on('load', function () {
       let email = $('.email').val();
       let id = form.find('.id').val();
 
-
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/tambahCart',
          data: { gambar: gambar, title: title, hargaAwal: hargaAwal, hargaAkhir: hargaAkhir, email: email, id: id, pcode: pcode },
-         type: 'POST',
+         method: 'POST',
          success: (data) => {
-            console.log(data);
+            let jmlProductID = parseInt(data) - 1;
+            console.log(jmlProductID);
+
+            let elementButton = $(this)[0][8];
+            let detail = elementButton.nextSibling.nextSibling;
+            if (jmlProductID == 0) {
+               setTimeout(() => {
+                  const p = document.createElement('p');
+                  p.classList.add('textHabis');
+                  p.innerHTML = 'Stock Habis';
+                  this.appendChild(p);
+                  elementButton.remove();
+                  detail.remove();
+               }, 2000)
+            }
+
             Swal.fire(
                'Berhasil!',
                'Ditambahkan',
@@ -96,7 +110,7 @@ $(window).on('load', function () {
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/cartItem',
          data: { email: email },
-         type: 'POST',
+         method: 'POST',
          success: (data) => {
             setTimeout(() => {
                $('#cartItem').html(data);
@@ -143,7 +157,7 @@ $(window).on('load', function () {
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/deleteCart',
          data: { id: id, email: email },
-         type: 'POST',
+         method: 'POST',
          success: (data) => {
             var dataResponse = JSON.parse(data);
             console.log(data);
@@ -192,7 +206,7 @@ $(window).on('load', function () {
       let email = $('.email').val();
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/loadData',
-         type: 'POST',
+         method: 'POST',
          data: { email: email },
          success: (data) => {
             $('.uyu').html(data);
@@ -206,7 +220,7 @@ $(window).on('load', function () {
       $.ajax({
          url: 'http://localhost/Bikes_CI/Home/Ajax',
          data: { query: query, email: email },
-         type: 'POST',
+         method: 'POST',
          success: (data) => {
             $('.grid').html(data);
             $('.slider').slick({
@@ -216,7 +230,7 @@ $(window).on('load', function () {
                arrows: false,
                dots: true,
             });
-            console.log(data);
+
             $('.grid__item').hover(function () {
                $(this).toggleClass('active');
             })
@@ -228,10 +242,32 @@ $(window).on('load', function () {
       let search = $(this).val();
       if (search != '') {
          load_data(search);
-      } else {
-         load_data();
       }
    })
+
+
+   let itemProduct = (function () {
+      let email = $('.email').val();
+      let query = 'product';
+      $.ajax({
+         url: 'http://localhost/Bikes_CI/Home/itemProduct',
+         data: { email: email, query: query },
+         method: 'POST',
+         success: data => {
+            $('.grid').html(data);
+            $('.slider').slick({
+               infinite: false,
+               slidesToShow: 1,
+               slidesToScroll: 1,
+               arrows: false,
+               dots: true,
+            });
+            $('.grid__item').hover(function () {
+               $(this).toggleClass('active');
+            })
+         }
+      })
+   })();
 })
 
 
