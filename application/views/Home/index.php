@@ -23,7 +23,9 @@
             <?php endif; ?>
 
             <div style="position: relative" class="hoverCart">
-               <a class="nav-item nav-link cart" style="position: relative;" href="Cart/index.html">
+               <a class="nav-item nav-link cart" style="position: relative;" href="<?= base_url(
+                                                                                       (isset($email)) ? 'Cart' : 'Login'
+                                                                                    ) ?>">
                   <i class="fas fa-shopping-cart KERANJANG" style="position: relative;">
                      <span id="cartItem" style="font-family: 
                      Nunito;"></span>
@@ -31,17 +33,6 @@
                </a>
 
                <div class="parentHover" style="position: absolute;">
-                  <div class="contentHover">
-                     <div class="header">
-                        <p>Baru saja di tambahkan!</p>
-                     </div>
-
-                     <div class="uyu"></div>
-
-                     <div class="Btn">
-                        <a href="" class="btn btn-outline-danger d-block CekKeranjang">Check Keranjang</a>
-                     </div>
-                  </div>
                </div>
             </div>
 
@@ -216,7 +207,6 @@
 
    <div class="row contentProduk notFoundProduk">
       <div class="grid">
-
       </div>
    </div>
 </div>
@@ -234,7 +224,7 @@
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio odit officiis culpa, necessitatibus
                laboriosam, eos deleniti ad asperiores, magnam suscipit minima autem et nihil delectus molestiae
                repellat voluptas dolorem ut.</p>
-            <a href="#">
+            <a href="<?= base_url((isset($email)) ? 'About' : 'Login') ?>">
                <span></span>
                <span></span>
                <span></span>

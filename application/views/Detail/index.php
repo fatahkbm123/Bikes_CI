@@ -5,7 +5,7 @@
       <div class="navbar-nav navbar-nav1">
          <?php if (isset($email)) : ?>
             <div class="navbar-nav navbar-nav1 align-items-center">
-               <div style="position: relative;">
+               <div class="UYE" style="position: relative;">
                   <a href="" class="nav-item nav-link btnUser" style="position: relative;">
                      <?= $users['username']; ?>
                      <img src="<?= base_url('asset/default.jpg'); ?>" class="gambarUser img-thumbnail rounded-circle" width="25">
@@ -22,7 +22,7 @@
                   <a class="nav-item nav-link linkEffect" href="<?= base_url('Login'); ?>">Sign In</a>
                <?php endif; ?>
                <a class="nav-item nav-link cart" style="position: relative;" href="../Cart/index.html">
-                  <i class="fas fa-shopping-cart">
+                  <i class="fas fa-shopping-cart KERANJANG">
                      <span id="cartItem"></span>
                   </i>
                </a>

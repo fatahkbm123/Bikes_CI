@@ -1,10 +1,13 @@
 <?php
 $ci = get_instance();
 
-$ci->db->like('title', $this->input->post('query'));
-$ci->db->or_like('brand', $this->input->post('query'));
-$data = $ci->db->get('product')->result_array();
-
+if ($this->input->post('query') == '') {
+   $data = $ci->db->get('product')->result_array();
+} else {
+   $ci->db->like('title', $this->input->post('query'));
+   $ci->db->or_like('brand', $this->input->post('query'));
+   $data = $ci->db->get('product')->result_array();
+}
 ?>
 
 <?php if (!empty($data)) : ?>

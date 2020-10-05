@@ -9,7 +9,7 @@ class Home extends CI_Controller
       $data['script'] = 'home.js';
       $data['email'] = $this->session->userdata('email');
       $data['users'] = $this->db->get_where('users', ['email' => $data['email']])->row_array();
-      $data['carousel'] = ['asset/foto4.jpg', 'asset/FotoProduct/sepeda1.jpg', 'asset/foto6.jpg'];
+      $data['carousel'] = ['asset/FotoProduct/sepeda1.jpg', 'asset/FotoProduct/sepeda1.jpg', 'asset/FotoProduct/sepeda1.jpg'];
       $data['testimonial'] = [
          [
             'gambar' => 'asset/Me.jpg',

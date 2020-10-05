@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Nunito:wght@400&family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Kalam:wght@300&display=swap');
+
+nav {
+   box-shadow: 0 0 5px black;
+   background: white;
+}
+
+.navbar-brand {
+   text-transform: uppercase;
+   font-family: 'Anton', sans-serif;
+   font-size: 25px;
+}
+
+body {
+   font-family: 'Nunito', sans-serif;
+}
+
+.RTitle {
+   border: 1px solid grey;
+   padding: 15px;
+   height: 60px;
+   border-radius: 4px;
+}
+
+img {
+   object-fit: cover;
+}
+
+.CCart .form-inline {
+   padding: 10px;
+   margin-top: -20px;
+   position: relative;
+   top: -15px;
+   left: -8px;
+}
+
+.CCart img{
+   margin-left: 10px;
+   position: relative;
+   top: 25px;
+   margin-right: 15px;
+}
+
+.CCart .form-inline .form-group {
+   position: absolute;
+   left: 160px;
+   top: 80px;
+   font-size: 14px;
+}
+
+.qty, .price {
+   position: relative;
+   right: 0;
+}
+
+.qty {
+   margin-right: 50px;
+}
+
+.Cart {
+   margin-top: -40px;
+}
+
+.CCart {
+   border: 1px solid grey;
+   padding: 15px;
+   border-radius: 4px;
+   margin-bottom: 5px;
+}
+
+.col-lg-5 .wrapper{
+   width: 300px;
+   position: relative;
+   border: 1px solid grey;
+   border-radius: 4px;
+   padding: 15px;
+}
+
+.col-lg-5 .wrapper .form-inline h3, h4 {
+   font-size: 20px;
+}
+
+.col-lg-5 .wrapper .form-inline {
+   margin-bottom: 10px;
+}
+
+.Rpembayaran {
+   display: none;
+}
+
+/* NotFoundProduk */
+.notFound {
+   display: none !important;
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+.fa-cart-arrow-down {
+   font-size: 70px;
+   margin-bottom: 20px;
+}
+
+.notFound span {
+   font-size: 25px;
+}
+
+@media (max-width: 991px) {
+   .Cart {
+      margin-top: -20px;
+   }
+   .col-lg-5 .wrapper {
+      display: none;
+   }
+
+   .Rpembayaran span {
+      margin-right: 10px;
+   }
+   .Rpembayaran {
+      position: absolute;
+      display: flex;
+      right: 0;
+      top: 0px;
+   }
+}
+
+@media (max-width: 576px) {
+   .fa-cart-arrow-down {
+      font-size: 40px;
+   }
+
+   .hapus {
+      font-weight: bold !important;
+      font-size: 14px !important;
+   }
+
+   .Cart, .RTitleProduk {
+      padding: 20px !important;
+   }
+
+   .Cart {
+      margin-top: -60px;
+   }
+
+   span, .custom-control-label {
+      font-size: 14px !important;
+   }
+   
+   /* Akhir NotFoundProduk */
+   .qty {
+      margin-right: 10px;
+   }
+
+   .CCart .form-inline span, .CCart .form-inline .form-group a {
+      font-size: 14px !important;
+   }
+}
+
+@media (max-width: 465px) {
+   .RTitleProduk h2 {
+      position: relative;
+      top: 6px;
+      font-size: 20px;
+   }
+
+   .Rpembayaran a {
+      font-size: 14px;
+   }
+}
+
+@media (max-width: 410px) {
+   .qty, .price {
+      right: -20px;
+   }
+}
+
+@media (max-width: 409px) {
+   .price {
+      position: absolute;
+      right: 0px !important; 
+   }
+
+   .qty {
+      position: absolute;
+      right: -10px;
+      bottom: 0;
+   }
+}

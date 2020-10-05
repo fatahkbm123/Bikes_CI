@@ -101,6 +101,21 @@ function Counter() {
       type: 'POST',
       success: (data) => {
          $('#cartItem').html(data);
+         if (data < 10) {
+            $('.UYE').css({
+               'right': '0px'
+            })
+            $('.KERANJANG').css({
+               'left': '0px'
+            })
+         } else if (data > 9) {
+            $('.UYE').css({
+               'right': '-10px'
+            })
+            $('.KERANJANG').css({
+               'left': '12px'
+            })
+         }
       }
    })
 }
