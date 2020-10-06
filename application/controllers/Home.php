@@ -124,7 +124,6 @@ class Home extends CI_Controller
       $query = $this->db->delete('cart', ['id' => $this->input->post('id')]);
       $rows = $this->db->get_where('cart', ['email' => $this->input->post('email')])->num_rows();
       if ($query) {
-         // echo json_encode(array("statusCode" => 200));
          echo $rows;
       }
    }

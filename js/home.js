@@ -87,11 +87,11 @@ $(document).on('submit', 'form', function (e) {
             }, 2000)
          }
 
-         Swal.fire(
-            'Berhasil!',
-            'Ditambahkan',
-            'success'
-         )
+         Swal.fire({
+            text: 'Ditambahkan',
+            icon: 'success',
+            position: 'top-start'
+         })
 
          const cart = document.querySelector('.KERANJANG');
          let span = document.createElement('span');

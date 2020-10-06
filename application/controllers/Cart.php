@@ -22,4 +22,21 @@ class Cart extends CI_Controller
          echo true;
       }
    }
+
+   public function deleteCart()
+   {
+      $query = $this->db->delete('cart', ['id' => $this->input->get('id')]);
+      $rows = $this->db->get_where('cart', ['email' => $this->input->get('email')])->num_rows();
+      if ($query) {
+         echo $rows;
+      }
+   }
+
+   public function deleteCartAll()
+   {
+      $email = $this->input->get('email');
+      $this->db->delete('cart', ['email' => $email]);
+      $dataCart = $this->db->get_where('cart', ['email' => $this->input->get('email')])->num_rows();
+      echo json_encode(['dataCart' => $dataCart]);
+   }
 }

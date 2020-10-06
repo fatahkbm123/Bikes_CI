@@ -8,6 +8,7 @@ body {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   padding-right: 0 !important;
 }
 
 .addAnimation {
@@ -188,7 +189,6 @@ body {
 .content img, .content .jmlProduk, .content a{
    margin: 10px;
 }
-
 
 .swal2-styled.swal2-confirm {
    display: none !important;
