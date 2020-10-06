@@ -7,6 +7,10 @@ nav {
    background: white;
 }
 
+.navbar-nav a {
+   font-size: 20px;
+}
+
 .navbar-brand {
    text-transform: uppercase;
    font-family: 'Anton', sans-serif;
@@ -29,13 +33,8 @@ body {
    margin-bottom: 25px;
 }
 
-.Forgot {
-   margin-top: -10px;
-   font-size: 14px;
-}
-
 .form-group {
-   margin-top: -5px;
+   margin-top: -5px; 
    position: relative;
 }
 
@@ -52,16 +51,10 @@ button {
    font-weight: bold !important;
 }
 
-.Password i {
-   position: absolute;
-   right: 13px;
-   top: 43px;
-   cursor: pointer;
+.CForm {
+   margin-top: 150px;
 }
 
-.navbar-nav {
-   font-size: 20px;
-}
 
 .form-control:focus {
    border: 1px solid rgba(0, 0, 0, .2);
@@ -92,6 +85,12 @@ button {
    visibility: hidden;
 }
 
+@media (max-width: 991px) {
+   .CForm {
+      margin-top: 100px;
+   }
+}
+
 @media (max-width: 767px) {
    .form-group {
       margin-top: 0px;
@@ -113,25 +112,16 @@ button {
       font-size: 14px;
    }
 
+   .form-group .iconError {
+      top: 40px;
+   }
+
    h1 {
       font-size: 30px;
    }
 
-   .form-group .iconError {
-      top: 40px;
-   }
-   
-
    body {
       font-size: 14px;
-   }
-
-   .Password i {
-      top: 40px;
-   }
-
-   .Forgot a {
-      font-size: 13px;
    }
 
    .CForm {

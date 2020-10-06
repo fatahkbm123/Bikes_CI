@@ -44,27 +44,13 @@ class detail extends CI_Controller
 
       $users = $this->db->get_where('cart', ['email' => $this->input->post('email')])->row_array();
 
-      if ($this->input->post('title') == $users['title']) {
+      if ($this->input->post('pcode') == $users['pcode']) {
          $this->db->set('qty', $users['qty'] + $this->input->post('jmlProduk'));
-         $this->db->where('title', $this->input->post('title'));
+         $this->db->set('hargaAkhir', $users['hargaAkhir'] + $this->input->post('hargaAkhir'));
+         $this->db->where('pcode', $this->input->post('pcode'));
          $this->db->update('cart');
          return false;
       }
       $this->db->insert('cart', $data);
-   }
-
-   public function setQty()
-   {
-      $productID = $this->db->get_where('product', ['id' => $this->input->post('id')])->row_array();
-      $data = [
-         'jmlProduk' => $productID['jmlProduk'] -  $this->input->post('qty')
-      ];
-      $this->db->where('id', $this->input->post('id'));
-      $this->db->update('product', $data);
-
-      if ($this->db->get('product')->num_rows()) {
-         $result2 = $this->db->get_where('product', ['id' => $this->input->post('id')])->row_array();
-         echo $result2['jmlProduk'];
-      }
    }
 }

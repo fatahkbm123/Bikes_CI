@@ -18,7 +18,7 @@ $data = $ci->db->get($this->input->post('query'))->result_array();
       <div class="meta">
          <h3 class="meta__title"><?= $produk['title']; ?></h3>
          <span class="meta__brand"><?= $produk['brand']; ?></span>
-         <span class="meta__price"><?= $produk['harga']; ?></span>
+         <span class="meta__price"><?= number_format($produk['harga'], 0, ',', '.'); ?></span>
       </div>
       <?php if (!empty($email)) : ?>
          <form>

@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Nunito:wght@200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Kalam:wght@300&display=swap');
+body {
+   font-family: Nunito;
+}
+
+.Footer {
+   padding: 20px;
+   box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+
+.Footer p {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   font-family: 'Nunito', sans-serif;
+   font-weight: bold;
+}
+
+.judul {
+   font-family: 'Poppins', sans-serif;
+   font-size: 20px;
+}
+
+nav {
+   box-shadow: 0 0 5px black;
+   background: white;
+   padding: 12px !important;
+}
+
+.navbar-nav a {
+   font-size: 16px;
+   color: grey !important;
+   font-weight: bold;
+   font-family: Nunito;
+}
+
+.text-danger {
+   font-size: 20px;
+}
+
+.display-4 {
+   font-size: 34px;
+   margin-bottom: 15px;
+}
+
+.formBox {
+   width: 470px;
+}
+
+.form-control {
+   width: 100%;
+   height: 40px !important;
+   padding: 15px;
+   font-size: 14px;
+   margin-bottom: 5px;
+}
+
+button {
+   position: absolute;
+   top: 3px;
+   right: 0;
+   background: none !important;
+   border: none !important;
+   color: grey !important;
+}
+
+small {
+   margin-left: 5px;
+}
+
+img {
+   object-fit: cover;
+   width: 100%;
+}
+
+.Pencarian {
+   margin-top: 100px;
+}
+
+.card {
+   height: 150px;
+}
+
+.card-body p {
+   font-size: 15px;
+   margin-top: 25px;
+}
+
+.Menu {
+   margin-bottom: 50px;
+}
+
+.judulMenu {
+   font-size: 30px !important;
+}
+
+@media (max-width: 991px) {
+   .banner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      width: 50%;
+   }
+
+   .Menu {
+      margin-top: 100px;
+   }
+
+   .card {
+      margin: 0px !important;
+   }
+}
+
+@media (max-width: 767px) {
+   .banner {
+      display: none;
+   }
+
+   .Pencarian {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+}
+
+@media (max-width: 576px) {
+   .Pencarian {
+      padding: 30px !important;
+   }
+
+   .formBox {
+      width: 400px;
+   }
+}
+
+@media (max-width: 528px) {
+   .display-4 {
+      font-size: 25px;
+   }
+}
+
+@media (max-width: 412px) {
+   .display-4 {
+      font-size: 23px;
+   }
+
+   .formBox {
+      width: 350px;
+   }
+
+   small {
+      font-size: 12px;
+   }
+}
+
+
+@media (max-width: 377px) {
+
+   .display-4 {
+      font-size: 17px;
+   }
+
+   .formBox {
+      width: 250px;
+   }
+
+   small {
+      padding: 0px 35px !important;
+      font-size: 12px;
+   }
+}
+
+@media (max-width: 340px) {
+   small {
+      padding: 0 20px !important;
+   }
+}
+
+@media (max-width: 300px) {
+   small {
+      padding: 0 10px !important;
+   }
+}
+
+
+
+
+

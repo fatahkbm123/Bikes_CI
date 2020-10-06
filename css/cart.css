@@ -152,6 +152,10 @@ img {
       display: none;
    }
 
+   .Cart {
+      margin-top: 5px !important;
+   }
+
    .Rpembayaran span {
       margin-right: 10px;
    }
@@ -166,6 +170,10 @@ img {
 @media (max-width: 576px) {
    .fa-cart-arrow-down {
       font-size: 40px;
+   }
+
+   .Cart {
+      margin-top: -35px !important;
    }
 
    .hapus {
@@ -223,5 +231,11 @@ img {
       position: absolute;
       right: -10px;
       bottom: 0;
+   }
+}
+
+@media (max-width: 380px) {
+   .CCart .form-inline span, .CCart .form-inline .form-group a {
+      font-size: 12px !important;
    }
 }

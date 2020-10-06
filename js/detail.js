@@ -54,6 +54,7 @@ $(document).on('submit', 'form', function (e) {
    let gambar = $('.jumbo').attr('data-gambar');
    let jumlahProduk = $('.Qty2').val();
    let email = $('.email').val();
+   let pcode = $('.pcode').val();
    let id = $('.id').val();
 
    $.ajax({
@@ -62,7 +63,7 @@ $(document).on('submit', 'form', function (e) {
          hargaAwal: hargaAwal, hargaAkhir: hargaAkhir,
          title: title, gambar: gambar,
          jmlProduk: jumlahProduk, email: email,
-         id: id
+         pcode: pcode, id: id
       },
       type: 'POST',
       success: (data) => {

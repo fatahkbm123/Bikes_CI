@@ -9,19 +9,24 @@ let loadCart = (function () {
             $('.notFound').addClass('fade-in');
          } else {
             dataJson.forEach(cart => {
-               items += `<div class="row RCart"><div class="col-lg-7 CCart shadow-sm"><div class="form-inline" style="position: relative;"><form><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input checked" value="${cart.hargaAwal * cart.qty}" id="customCheck${cart.id}"><label class="custom-control-label" for="customCheck${cart.id}"></label></div></form><img src="http://localhost/Bikes_CI/asset/FotoProduct/${cart.gambar}" width="100"><span class="title">${cart.title}</span><div class="form-group"><a href="" class="hapus" data-id="${cart.id}">Hapus</a></div><span class="ml-auto qty">${cart.qty}</span><span class="price">Rp ${cart.hargaAwal * cart.qty}</span></div></div></div>`;
+               items += `<div class="row RCart"><div class="col-lg-7 CCart shadow-sm"><div class="form-inline" style="position: relative;"><form>
+               <input type="hidden" class="gambar" value="${cart.gambar}">
+               <input type="hidden" class="title" value="${cart.title}">
+               <input type="hidden" class="qty" value="${cart.qty}">
+               <input type="hidden" class="total" value="${cart.hargaAkhir}">
+               <input type="hidden" class="pcode" value="${cart.pcode}">
+               <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input checked" value="${cart.hargaAwal * cart.qty}" id="customCheck${cart.id}"><label class="custom-control-label" for="customCheck${cart.id}"></label></div></form><img src="http://localhost/Bikes_CI/asset/FotoProduct/${cart.gambar}" width="100"><span class="title">${cart.title}</span><div class="form-group"><a href="" class="hapus" data-id="${cart.id}">Hapus</a></div><span class="ml-auto qty">${cart.qty}</span><span class="price">Rp ${cart.hargaAkhir}</span></div></div></div>`;
                $('.Cart').html(items);
             })
          }
 
          $('.checked').on('click', function () {
+
             var add = 0;
             const checkboxes = document.querySelectorAll('.checked');
             for (var i = 0; i < checkboxes.length; i++) {
                if (checkboxes[i].checked) {
                   add += parseInt(checkboxes[i].value);
-               } else if (checkboxes[i].checked === false) {
-                  document.querySelector('.checkAll').checked = false;
                }
             }
             var bilangan = add;
@@ -29,6 +34,21 @@ let loadCart = (function () {
                ribuan = reverse.match(/\d{1,3}/g);
             ribuan = ribuan.join('.').split('').reverse().join('');
             $('.totalHarga').html(ribuan);
+            $('.totalHarga2').html(ribuan);
+
+            const form = $(this).closest('form');
+            const total = form.find('.total').val();
+            const email = $('.email').val();
+            const pcode = form.find('.pcode').val();
+            if (this.checked) {
+               $.ajax({
+                  url: `http://localhost/Bikes_CI/Cart/checkData?total=${total}&email=${email}&pcode=${pcode}`,
+               })
+            } else {
+               $.ajax({
+                  url: `http://localhost/Bikes_CI/Cart/deleteCheckData?pcode=${pcode}`,
+               })
+            }
          })
 
 
@@ -81,26 +101,25 @@ $(document).on('click', '.hapus', function (e) {
    })
 })
 
+// $('.checkAll').on('click', function () {
+//    const checkAllboxes = document.querySelectorAll('.checked');
+//    let add = 0;
+//    for (var i = 0; i < checkAllboxes.length; i++) {
+//       if (this.checked) {
+//          checkAllboxes[i].checked = true;
+//          if (checkAllboxes[i].checked) {
+//             add += parseInt(checkAllboxes[i].value);
+//          }
+//          var bilangan = add;
+//          var reverse = bilangan.toString().split('').reverse().join(''),
+//             ribuan = reverse.match(/\d{1,3}/g);
+//          ribuan = ribuan.join('.').split('').reverse().join('');
 
-$('.checkAll').on('click', function () {
-   const checkAllboxes = document.querySelectorAll('.checked');
-   let add = 0;
-   for (var i = 0; i < checkAllboxes.length; i++) {
-      if (this.checked) {
-         checkAllboxes[i].checked = true;
-         if (checkAllboxes[i].checked) {
-            add += parseInt(checkAllboxes[i].value);
-         }
-         var bilangan = add;
-         var reverse = bilangan.toString().split('').reverse().join(''),
-            ribuan = reverse.match(/\d{1,3}/g);
-         ribuan = ribuan.join('.').split('').reverse().join('');
-
-         $('.totalHarga').html(ribuan);
-      } else {
-         checkAllboxes[i].checked = false;
-         $('.totalHarga').html(0);
-      }
-   }
-})
+//          $('.totalHarga').html(ribuan);
+//       } else {
+//          checkAllboxes[i].checked = false;
+//          $('.totalHarga').html(0);
+//       }
+//    }
+// })
 

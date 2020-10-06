@@ -39,4 +39,20 @@ class Cart extends CI_Controller
       $dataCart = $this->db->get_where('cart', ['email' => $this->input->get('email')])->num_rows();
       echo json_encode(['dataCart' => $dataCart]);
    }
+
+   public function checkData()
+   {
+      $data = [
+         'email' => $this->input->get('email'),
+         'total' => $this->input->get('total'),
+         'pcode' => $this->input->get('pcode')
+      ];
+
+      $this->db->insert('checkdata', $data);
+   }
+
+   public function deleteCheckData()
+   {
+      $this->db->delete('checkdata', ['pcode' => $this->input->get('pcode')]);
+   }
 }

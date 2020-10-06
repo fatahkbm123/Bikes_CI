@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Nunito:wght@200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Kalam:wght@300&display=swap');
+body {
+   overflow: hidden;
+}
+nav {
+   box-shadow: 0 0 5px black;
+   background: white;
+}
+
+.navbar-nav a {
+   font-size: 20px;
+}
+
+.navbar-brand {
+   text-transform: uppercase;
+   font-family: 'Anton', sans-serif;
+   font-size: 25px;
+}
+
+.Footer {
+   padding: 20px;
+   position: absolute;
+   bottom: 0;
+   box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+
+.Footer p {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   font-family: 'Nunito', sans-serif;
+   font-weight: bold;
+}
+
+.About {
+   margin-top: 100px;
+}
+
+.CText {
+   margin-top: -200px;
+   padding: 200px;
+}
+
+.About h2 {
+   font-family: 'Poppins', sans-serif;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+
+.About p {
+   font-family: 'Nunito', sans-serif;
+   font-weight: bold;
+   color: grey;
+}
+
+@media (max-width: 991px) {
+   .About {
+      margin-top: 50px;
+   }
+
+   .CText {
+      margin-top: -100px;
+      padding: 100px;
+   }
+}
+
+@media (max-width: 737px) {
+   .About {
+      margin-top: 50px;
+   }
+   
+   .CText {
+      margin-top: -60px;
+      padding: 50px;
+   }
+}
+
+@media (max-width: 602px) {
+   .About {
+      margin-top: 30px !important;
+   }
+
+   .CText {
+      margin-top: 0px;
+      padding: 0px;
+   }
+}
+
+
+@media (max-width: 576px) {
+   .About {
+      margin-top: 80px !important;
+   }
+
+   .About h2 {
+      font-size: 25px;
+   }
+
+   .About p {
+      font-size: 14px;
+   }
+}
+
+
+
+@media (max-width: 472px) {
+   .About {
+      margin-top: 50px !important;
+   }
+
+   .About h2 {
+      font-size: 20px;
+   }
+
+   .CTitle {
+      margin-bottom: -10px !important;
+   }
+}
+
+@media (max-width: 397px) {
+   .About {
+      margin-top: 70px !important;
+   }
+
+   .About h2 {
+      font-size: 18px;
+   }
+
+   .About p {
+      font-size: 12px;
+   }
+}

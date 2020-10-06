@@ -13,7 +13,7 @@
             <h2>Keranjang Produk</h2>
 
             <div class=" form-inline Rpembayaran">
-               <span class="ml-auto">Rp 100.000</span>
+               <span class="ml-auto">Rp <span class="totalHarga2">0</span></span>
                <a href="<?= base_url('Checkout'); ?>" class="btn btn-danger">Pembayaran</a>
             </div>
          </div>
@@ -22,10 +22,7 @@
       <div class="row mt-4">
          <div class="col-lg-7 RTitle shadow">
             <div class="form-inline">
-               <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input checkAll" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Pilih Semua</label>
-               </div>
+               <label>ALL PRODUCT</label>
                <a href="" class="ml-auto mr-2 hapusAll">Hapus</a>
             </div>
          </div>

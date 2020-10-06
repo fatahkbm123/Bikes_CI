@@ -51,7 +51,7 @@ class Home extends CI_Controller
          ],
          [
             'navbar' => 'Help',
-            'href' => 'Help/index.html',
+            'href' => 'Help',
             'scroll' => ''
          ],
          [
@@ -105,6 +105,7 @@ class Home extends CI_Controller
       $users = $this->db->get_where('cart', ['title' => $this->input->post('title')])->row_array();
       if ($users['pcode'] == $this->input->post('pcode')) {
          $this->db->set('qty', $users['qty'] + 1);
+         $this->db->set('hargaAkhir', $users['hargaAwal'] * ($users['qty'] + 1));
          $this->db->where('pcode', $this->input->post('pcode'));
          $this->db->update('cart');
 

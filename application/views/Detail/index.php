@@ -21,7 +21,7 @@
                <div class="navbar-nav navbar-nav1">
                   <a class="nav-item nav-link linkEffect" href="<?= base_url('Login'); ?>">Sign In</a>
                <?php endif; ?>
-               <a class="nav-item nav-link cart" style="position: relative;" href="../Cart/index.html">
+               <a class="nav-item nav-link cart" style="position: relative;" href="<?= base_url('Cart') ?>">
                   <i class="fas fa-shopping-cart KERANJANG">
                      <span id="cartItem"></span>
                   </i>
@@ -88,6 +88,7 @@
                   <input type="hidden" class="harga2" value="<?= $product['harga'] ?>">
                   <input type="hidden" class="Qty2" value="<?= $product['qty'] ?>">
                   <input type="hidden" class="id" value="<?= $product['id'] ?>">
+                  <input type="hidden" class="pcode" value="<?= $product['pcode'] ?>">
 
                   <div class="pBtn">
                      <button type="submit" class="btn btn-outline-primary p-2 mt-3 addProduct"><i class="fas fa-cart-plus">&nbsp;</i> Masukkan Keranjang</button>
