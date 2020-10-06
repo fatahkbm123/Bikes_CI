@@ -96,7 +96,7 @@ class Register extends CI_Controller
             <div style="color: grey;
                         margin-bottom: 18px;
                         font-weight: bold;">
-            <p style="margin-bottom: -2px;">Dear : muhammadfatah398@gmail</p>
+            <p style="margin-bottom: -2px;">Dear : ' . $email . '</p>
             <p>Click active for verification Account!</p>
             </div>
             <div>
