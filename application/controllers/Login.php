@@ -11,6 +11,9 @@ class Login extends CI_Controller
 
    public function index()
    {
+      if($this->session->userdata('email')) {
+         redirect('Home');
+      }
       $data['judul'] = 'signIn';
       $data['css'] = 'signIn.css';
 

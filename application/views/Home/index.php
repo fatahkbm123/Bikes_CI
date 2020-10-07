@@ -8,12 +8,12 @@
             <div class="UYE" style="position: relative;">
                <a href="" class="nav-item nav-link btnUser" style="position: relative;">
                   <?= $users['username']; ?>
-                  <img src="<?= base_url('asset/default.jpg'); ?>" class="gambarUser img-thumbnail rounded-circle" width="25">
+                  <img src="<?= base_url('asset/') . $users['image'] ?>" class="gambarUser shadow-sm rounded-circle" width="25">
                   <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
                </a>
 
                <div class="userButton">
-                  <a href="">Profile</a>
+                  <a href="<?= base_url('Profile'); ?>">Profile</a>
                   <a href="<?= base_url('Home/logout'); ?>">Logout</a>
                </div>
             </div>

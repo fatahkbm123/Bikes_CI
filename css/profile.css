@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Nunito:wght@200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Kalam:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&family=Shadows+Into+Light&display=swap');
+body {
+   font-family: Nunito;
+}
+nav {
+   box-shadow: 0 0 5px black;
+   background: white;
+   padding: 12px !important;
+}
+
+.navbar-nav a {
+   font-size: 16px;
+   color: grey !important;
+   font-weight: bold;
+   font-family: Nunito;
+}
+
+.CProfile {
+   margin-top: 100px;
+}
+
+.title h3 {
+   font-family: 'Poppins';
+   font-weight: bold;
+}
+
+.title span {
+   font-family: 'Nunito';
+}
+
+table {
+   font-family: Nunito;
+}
+
+.CJudul:after {
+   content: '';
+   display: block;
+   width: 100%;
+   height: 3px;
+   background: black;
+   border-radius: 4px 0 0 4px;
+   clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+.Footer {
+   padding: 20px;
+   box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+   position: absolute;
+   bottom: 0;
+}
+
+.Footer p {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   font-family: 'Nunito', sans-serif;
+   font-weight: bold;
+}
+
+.password, .name {
+   transition: .3s;
+   cursor: pointer;
+}
+
+.password:hover, .name:hover {
+   background: rgba(180, 180, 180, 0.1);
+}
+
+.pw {
+   font-size: 14px;
+}
+
+.img {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.col-lg-5 {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   
+}
+.save {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.save button {
+   width: 50%;
+}
+
+.custom-file {
+   width: 50%;
+}
+
+@media (max-width: 991px) {
+   .Footer {
+      position: relative;
+   }
+
+   .CProfile {
+      margin-top: 60px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .title {
+      margin-top: 50px;
+      text-align: center;
+   }
+
+   .password, .name {
+      background:  rgba(180, 180, 180, 0.1);
+   }
+}
+
+@media (max-width: 576px) {
+   .arrow {
+      margin-left: 10px;
+   }
+
+   .title {
+      margin-top: -10px;
+      margin-bottom: 30px;
+   }
+
+   .custom-file, .save button {
+      width: 50%;
+      font-size: 14px;
+   }   
+
+   .title span {
+      font-size: 14px;
+   }
+}
+
