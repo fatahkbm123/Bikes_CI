@@ -86,6 +86,24 @@ class Home extends CI_Controller
 
    public function tambahCart()
    {
+      // Set Qty
+      $productID = $this->db->get_where('product', ['pcode' => $this->input->post('pcode')])->row_array();
+      $this->db->set('jmlProduk', $productID['jmlProduk'] - 1);
+      $this->db->where('pcode', $this->input->post('pcode'));
+      $this->db->update('product');
+      echo $productID['jmlProduk'];
+
+      // Add Cart
+      $users = $this->db->get_where('cart', ['pcode' => $this->input->post('pcode')])->row_array();
+      if ($users['pcode'] == $this->input->post('pcode')) {
+         $this->db->set('qty', $users['qty'] + 1);
+         $this->db->set('hargaAkhir', $users['hargaAwal'] * ($users['qty'] + 1));
+         $this->db->where('pcode', $this->input->post('pcode'));
+         $this->db->update('cart');
+
+         return false;
+      }
+
       $data = [
          'email' => $this->input->post('email'),
          'gambar' => $this->input->post('gambar'),
@@ -95,22 +113,6 @@ class Home extends CI_Controller
          'qty' => 1,
          'pcode' => $this->input->post('pcode')
       ];
-
-      $productID = $this->db->get_where('product', ['pcode' => $this->input->post('pcode')])->row_array();
-      $this->db->set('jmlProduk', $productID['jmlProduk'] - 1);
-      $this->db->where('pcode', $this->input->post('pcode'));
-      $this->db->update('product');
-      echo $productID['jmlProduk'];
-
-      $users = $this->db->get_where('cart', ['title' => $this->input->post('title')])->row_array();
-      if ($users['pcode'] == $this->input->post('pcode')) {
-         $this->db->set('qty', $users['qty'] + 1);
-         $this->db->set('hargaAkhir', $users['hargaAwal'] * ($users['qty'] + 1));
-         $this->db->where('pcode', $this->input->post('pcode'));
-         $this->db->update('cart');
-
-         return false;
-      }
 
       $this->db->insert('cart', $data);
    }

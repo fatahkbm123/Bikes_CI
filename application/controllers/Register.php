@@ -10,10 +10,10 @@ class Register extends CI_Controller
 
    public function index()
    {
-      if($this->session->userdata('email')) {
+      if ($this->session->userdata('email')) {
          redirect('Home');
       }
-      
+
       $data['judul'] = 'Sign Up';
       $data['css'] = 'signUp.css';
       $data['script'] = 'signUp.js';

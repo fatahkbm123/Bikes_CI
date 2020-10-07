@@ -49,7 +49,7 @@
                            <button type="submit" class="btn btn-danger btn-block shadow-sm">Login</button>
                         </div>
                         <div class="form-group Forgot">
-                           <a href="#">Forgot Password?</a>
+                           <a href="<?= base_url('forgotPassword'); ?>">Forgot Password?</a>
                         </div>
          </form>
       </div>

@@ -1,6 +1,6 @@
 <?php
 
-class detail extends CI_Controller
+class Detail extends CI_Controller
 {
    public function index($id)
    {
@@ -22,7 +22,7 @@ class detail extends CI_Controller
       // setQty
       $productID = $this->db->get_where('product', ['id' => $this->input->post('id')])->row_array();
       $dataQty = [
-         'jmlProduk' => $productID['jmlProduk'] -  $this->input->post('jmlProduk')
+         'jmlProduk' => $productID['jmlProduk'] - $this->input->post('jmlProduk')
       ];
       $this->db->where('id', $this->input->post('id'));
       $this->db->update('product', $dataQty);
@@ -31,16 +31,6 @@ class detail extends CI_Controller
          $result2 = $this->db->get_where('product', ['id' => $this->input->post('id')])->row_array();
          echo $result2['jmlProduk'];
       }
-
-      // Add
-      $data = [
-         'email' => $this->input->post('email'),
-         'gambar' => $this->input->post('gambar'),
-         'title' => $this->input->post('title'),
-         'hargaAwal' => $this->input->post('hargaAwal'),
-         'hargaAkhir' => $this->input->post('hargaAkhir'),
-         'qty' => $this->input->post('jmlProduk'),
-      ];
 
       $users = $this->db->get_where('cart', ['email' => $this->input->post('email')])->row_array();
 
@@ -51,6 +41,18 @@ class detail extends CI_Controller
          $this->db->update('cart');
          return false;
       }
+
+      // Add
+      $data = [
+         'email' => $this->input->post('email'),
+         'gambar' => $this->input->post('gambar'),
+         'title' => $this->input->post('title'),
+         'hargaAwal' => $this->input->post('hargaAwal'),
+         'hargaAkhir' => $this->input->post('hargaAkhir'),
+         'qty' => $this->input->post('jmlProduk'),
+         'pcode' => $this->input->post('pcode')
+      ];
+
       $this->db->insert('cart', $data);
    }
 }
