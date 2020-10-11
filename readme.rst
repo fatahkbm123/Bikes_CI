@@ -4,6 +4,4 @@ Bikes Shop
 
 For demo 
 
-*******************************************************
-<a href="https://bikes-e-comerce.rf.gd">Click Here!</a>
-*******************************************************
+<a href="http://bikes-e-comerce.rf.gd/">Click Here</a>
