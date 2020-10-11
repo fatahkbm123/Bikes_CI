@@ -1,6 +1,4 @@
-##########
-Bikes Shop
-##########
+# BIKES SHOP
 
 FOR DEMO
 
